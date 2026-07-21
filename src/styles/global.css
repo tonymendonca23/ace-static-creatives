@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  /* Humanized warm palette inspired by hero-image-4.png */
+  --color-base: #121414;
+  --color-surface: #1a1c1b;
+  --color-surface-2: #222524;
+  --color-cream: #f7f4ef;
+  --color-cream-dim: #e9e3d4;
+  --color-sand: #b6c29a;
+  --color-olive: #90905c;
+  --color-forest: #4d842b;
+  --color-clay: #b85c4a;
+  --color-clay-dark: #8a4538;
+  --color-warm-blue: #4a6fa5;
+
+  --font-sans: 'Roboto', system-ui, sans-serif;
+  --font-heading: 'Sora', system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+

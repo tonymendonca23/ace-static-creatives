@@ -1,0 +1,173 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FreeMockupModal from '../components/FreeMockupModal.astro';
+
+const title = 'About | Ace Static Creatives';
+const description =
+  'Ace Static Creatives is a Guyanese digital growth partner building fast static sales engines, scroll-stopping ads, and persuasive copy for local small businesses.';
+
+const pillars = [
+  {
+    number: '1',
+    title: 'Speed & Security Over Clutter',
+    body: 'We build on lightning-fast, modern static architecture. No slow load times, no broken server plugins, and zero vulnerability to crashes.',
+  },
+  {
+    number: '2',
+    title: 'Digital Persuasion',
+    body: 'Every headline, button, and image on your page is placed with deliberate psychological intent—designed to capture attention and trigger action.',
+  },
+  {
+    number: '3',
+    title: 'Frictionless Local Routing',
+    body: 'In Guyana, sales happen on WhatsApp. We engineer every system to route pre-qualified leads directly into your phone so you can close deals instantly.',
+  },
+  {
+    number: '4',
+    title: 'Shared Risk (The Godfather Commitment)',
+    body: 'We do not believe in charging massive setup fees before proving our value. Offers like our $0 Upfront Launch Engine exist because we back our work completely.',
+  },
+];
+---
+
+<Layout title={title} description={description}>
+  <main class="w-full overflow-hidden">
+    <!-- HERO -->
+    <section class="px-6 pb-20 pt-28 text-center">
+      <p class="text-xs font-bold uppercase tracking-wider text-sand">
+        The Story Behind Ace Static Creatives
+      </p>
+      <h1 class="mx-auto mt-6 max-w-5xl text-4xl font-black leading-[1.1] tracking-tight text-cream md:text-5xl lg:text-6xl">
+        We Didn’t Start An Agency To Build "Pretty Websites." We Built It To End The Digital
+        Guesswork For Guyanese Business Owners.
+      </h1>
+      <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-cream-dim/80 md:text-xl">
+        For too long, local businesses have been forced to choose between over-priced, arrogant
+        corporate agencies or cheap freelancers who build digital brochures that bring in zero
+        leads. We built a third option:
+        <span class="font-semibold text-cream">
+          fast, enterprise-grade sales engines engineered to scale your revenue.
+        </span>
+      </p>
+    </section>
+
+    <!-- VILLAIN: WHY MOST WEBSITES FAIL -->
+    <section class="bg-surface px-6 py-24">
+      <div class="mx-auto max-w-6xl">
+        <div class="mb-16 text-center">
+          <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
+            Why Most Small Business Websites Fail Miserably
+          </h2>
+        </div>
+
+        <div class="mx-auto max-w-4xl space-y-6 text-lg leading-relaxed text-cream-dim/80">
+          <p>
+            Let’s be completely transparent. Most web designers in the market care about one thing:
+            making a page look "aesthetic" so they can put it in their portfolio and collect your
+            check. But aesthetics don't pay your bills.
+            <span class="font-bold text-cream"> Conversions do.</span>
+          </p>
+          <p>
+            When you hire a traditional web designer, they hand you a site and expect <span class="italic text-cream">you</span> to figure out the copywriting, the lead routing, the marketing psychology, and the ad campaign.
+          </p>
+        </div>
+
+        <div class="mx-auto mt-14 grid max-w-4xl gap-4 rounded-2xl border border-cream-dim/10 bg-base p-6 md:grid-cols-2 md:p-8">
+          <div class="rounded-xl bg-surface p-5">
+            <h3 class="mb-2 text-sm font-bold uppercase tracking-wider text-clay">
+              Traditional Web Designer
+            </h3>
+            <p class="text-cream-dim/80">Pretty Layout + "Contact Us" Form + Zero Leads ❌</p>
+          </div>
+          <div class="rounded-xl bg-forest/10 p-5">
+            <h3 class="mb-2 text-sm font-bold uppercase tracking-wider text-sand">
+              Ace Static Creatives
+            </h3>
+            <p class="text-cream">Digital persuasion + Bulletproof Tech + WhatsApp Sales Engine <img src="https://img.icons8.com/?size=100&id=VFaz7MkjAiu0&format=png&color=000000" alt="" class="inline-block h-5 w-5 invert" loading="lazy" decoding="async" /></p>
+          </div>
+        </div>
+
+        <div class="mx-auto mt-14 max-w-4xl">
+          <p class="text-center text-lg leading-relaxed text-cream-dim">
+            We realized Guyanese service providers and business owners didn't need more "digital
+            art." They needed an
+            <span class="font-bold text-cream">automated, 24/7 Digital Salesman</span>
+            that works around the clock to turn cold traffic into pre-qualified leads.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE PILLARS -->
+    <section class="px-6 py-24">
+      <div class="mx-auto max-w-6xl">
+        <div class="mb-16 text-center">
+          <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
+            The Ace Static Standards
+          </h2>
+          <p class="mx-auto mt-4 max-w-2xl text-lg text-cream-dim/80">
+            The four pillars that define every system we build.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          {
+            pillars.map((pillar) => (
+              <div class="rounded-2xl border border-cream-dim/10 bg-surface p-8 transition hover:border-sand/40">
+                <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-forest text-sm font-black text-cream">
+                  {pillar.number}
+                </div>
+                <h3 class="text-xl font-bold text-cream">{pillar.title}</h3>
+                <p class="mt-3 leading-relaxed text-cream-dim/70">{pillar.body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION STATEMENT -->
+    <section class="bg-surface px-6 py-24 text-center">
+      <div class="mx-auto max-w-4xl">
+        <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
+          We Measure Our Success On Your Cash Register, Not Design Awards.
+        </h2>
+        <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-cream-dim/80">
+          At Ace Static Creatives, our core focus is simple:
+          <span class="font-semibold text-cream">to help local businesses claim their market dominance.</span>
+        </p>
+        <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-cream-dim/80">
+          Whether you are a local courier service, a growing contractor, a spa owner, or a
+          specialized professional service, you deserve enterprise-grade digital systems without
+          corporate bloat or hidden fees. We act as your fractional digital growth team—handling
+          the tech, the copy, and the management so you can focus entirely on running your
+          operations and fulfilling sales.
+        </p>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="px-6 py-24 text-center">
+      <div class="mx-auto max-w-4xl rounded-[2rem] border border-cream-dim/10 bg-gradient-to-br from-surface to-base p-8 md:p-16">
+        <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
+          Ready To Put A 24/7 Digital Salesman To Work For Your Business?
+        </h2>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-cream-dim/80">
+          You don't need to take our word for it. Let us prove it to you before you spend a single
+          cent on setup fees.
+        </p>
+        <div class="mt-10">
+          <FreeMockupModal triggerLabel="Tap Here To Claim Your FREE Custom Digital Salesman Mockup" />
+        </div>
+        <div class="mx-auto mt-10 max-w-xl text-left">
+          <p class="mb-3 font-bold text-cream">What happens next?</p>
+          <ol class="list-decimal space-y-2 pl-5 text-cream-dim/80">
+            <li>Fill out our 20-second questionnaire.</li>
+            <li>We build a custom preview tailored to your exact industry.</li>
+            <li>You review it on WhatsApp—zero pressure, zero obligation.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

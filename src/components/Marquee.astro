@@ -1,0 +1,24 @@
+---
+export interface Props {
+  items?: string[];
+}
+
+const {
+  items = ['Fast Static Sites', 'Scroll-Stopping Ads', 'Persuasive Copy', '24/7 Support'],
+} = Astro.props;
+---
+
+<div class="relative overflow-hidden border-y border-cream-dim/10 bg-surface py-4">
+  <div class="animate-marquee flex w-max items-center gap-12 whitespace-nowrap">
+    {
+      [...items, ...items, ...items, ...items].map((text) => (
+        <span class="flex items-center gap-12">
+          <span class="text-sm font-black uppercase tracking-[0.2em] text-sand/80">
+            {text}
+          </span>
+          <span class="h-1.5 w-1.5 rounded-full bg-clay" aria-hidden="true" />
+        </span>
+      ))
+    }
+  </div>
+</div>
