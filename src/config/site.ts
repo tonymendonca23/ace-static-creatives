@@ -12,7 +12,7 @@
 /* ═══════════════════════════════ BRAND ═══════════════════════════════ */
 
 /** Production domain. Change this when deploying to a different URL. */
-export const siteUrl = 'https://acestaticcreatives.com';
+export const siteUrl = 'https://ace-static-creatives.com';
 
 export const brand = {
   name: 'Ace Static Creatives',
@@ -48,7 +48,7 @@ export const contact = {
   /** International format, no leading + */
   whatsappNumber: '5926751884',
   whatsappUrl: 'https://wa.me/5926751884',
-  email: 'hello@acestaticcreatives.com',
+  email: 'acestaticcreatives93@gmail.com',
   location: 'Georgetown, Guyana',
   responseTime: 'Usually within a few hours on WhatsApp.',
 };

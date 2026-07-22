@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 // https://docs.astro.build/en/guides/deploy/
 // https://docs.astro.build/en/guides/integrations-guide/sitemap/
 export default defineConfig({
-  site: 'https://acestaticcreatives.com',
+  site: 'https://ace-static-creatives.com',
 
   integrations: [
     sitemap({
@@ -25,7 +25,7 @@ export default defineConfig({
         const now = new Date().toISOString();
         const lastmod = item.lastmod || now;
 
-        if (item.url === 'https://acestaticcreatives.com/') {
+        if (item.url === 'https://ace-static-creatives.com/') {
           return { ...item, changefreq: 'weekly', priority: 1.0, lastmod };
         }
         if (item.url.includes('/services')) {

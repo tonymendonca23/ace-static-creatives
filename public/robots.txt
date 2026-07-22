@@ -1,6 +1,6 @@
-# https://acestaticcreatives.com/robots.txt
+# https://ace-static-creatives.com/robots.txt
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://acestaticcreatives.com/sitemap-index.xml
+Sitemap: https://ace-static-creatives.com/sitemap-index.xml
