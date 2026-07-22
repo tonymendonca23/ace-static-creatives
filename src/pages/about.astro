@@ -1,120 +1,101 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import FreeMockupModal from '../components/FreeMockupModal.astro';
+import { seo, about } from '../config/site';
 
-const title = 'About | Ace Static Creatives';
-const description =
-  'Ace Static Creatives is a Guyanese digital growth partner building fast static sales engines, scroll-stopping ads, and persuasive copy for local small businesses.';
-
-const pillars = [
-  {
-    number: '1',
-    title: 'Speed & Security Over Clutter',
-    body: 'We build on lightning-fast, modern static architecture. No slow load times, no broken server plugins, and zero vulnerability to crashes.',
-  },
-  {
-    number: '2',
-    title: 'Digital Persuasion',
-    body: 'Every headline, button, and image on your page is placed with deliberate psychological intent—designed to capture attention and trigger action.',
-  },
-  {
-    number: '3',
-    title: 'Frictionless Local Routing',
-    body: 'In Guyana, sales happen on WhatsApp. We engineer every system to route pre-qualified leads directly into your phone so you can close deals instantly.',
-  },
-  {
-    number: '4',
-    title: 'Shared Risk (The Godfather Commitment)',
-    body: 'We do not believe in charging massive setup fees before proving our value. Offers like our $0 Upfront Launch Engine exist because we back our work completely.',
-  },
-];
+const { hero, whyFail, pillars, mission, finalCta } = about;
 ---
 
-<Layout title={title} description={description}>
+<Layout title={seo.about.title} description={seo.about.description}>
   <main class="w-full overflow-hidden">
     <!-- HERO -->
-    <section class="px-6 pb-20 pt-28 text-center">
-      <p class="text-xs font-bold uppercase tracking-wider text-sand">
-        The Story Behind Ace Static Creatives
-      </p>
-      <h1 class="mx-auto mt-6 max-w-5xl text-4xl font-black leading-[1.1] tracking-tight text-cream md:text-5xl lg:text-6xl">
-        We Didn’t Start An Agency To Build "Pretty Websites." We Built It To End The Digital
-        Guesswork For Guyanese Business Owners.
-      </h1>
-      <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-cream-dim/80 md:text-xl">
-        For too long, local businesses have been forced to choose between over-priced, arrogant
-        corporate agencies or cheap freelancers who build digital brochures that bring in zero
-        leads. We built a third option:
-        <span class="font-semibold text-cream">
-          fast, enterprise-grade sales engines engineered to scale your revenue.
-        </span>
-      </p>
+    <section class="relative px-6 pb-20 pt-24 text-center lg:pt-32">
+      <div class="bg-glow-forest pointer-events-none absolute inset-0" aria-hidden="true"></div>
+      <div class="relative" data-reveal>
+        <p class="inline-block rounded-full border border-sand/30 bg-surface-2 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-sand">
+          {hero.eyebrow}
+        </p>
+        <h1 class="mx-auto mt-6 max-w-5xl text-balance text-4xl font-black leading-[1.08] tracking-tight text-cream md:text-5xl lg:text-6xl">
+          {hero.headline}
+        </h1>
+        <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-cream-dim/80 md:text-xl">
+          {hero.subheadlineStart}
+          <span class="font-semibold text-cream"> {hero.subheadlineEmphasis}</span>
+        </p>
+      </div>
     </section>
 
     <!-- VILLAIN: WHY MOST WEBSITES FAIL -->
-    <section class="bg-surface px-6 py-24">
-      <div class="mx-auto max-w-6xl">
-        <div class="mb-16 text-center">
+    <section class="relative bg-surface px-6 py-24 lg:py-32">
+      <div class="bg-dot-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-6xl">
+        <div class="mb-16 text-center" data-reveal>
           <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
-            Why Most Small Business Websites Fail Miserably
+            {whyFail.heading}
           </h2>
         </div>
 
-        <div class="mx-auto max-w-4xl space-y-6 text-lg leading-relaxed text-cream-dim/80">
-          <p>
-            Let’s be completely transparent. Most web designers in the market care about one thing:
-            making a page look "aesthetic" so they can put it in their portfolio and collect your
-            check. But aesthetics don't pay your bills.
-            <span class="font-bold text-cream"> Conversions do.</span>
-          </p>
-          <p>
-            When you hire a traditional web designer, they hand you a site and expect <span class="italic text-cream">you</span> to figure out the copywriting, the lead routing, the marketing psychology, and the ad campaign.
-          </p>
+        <div class="mx-auto max-w-4xl space-y-6 text-lg leading-relaxed text-cream-dim/80" data-reveal>
+          {
+            whyFail.paragraphs.map((p) => (
+              <p>
+                {p.before}
+                {p.emphasis && <span class="font-bold text-cream"> {p.emphasis}</span>}
+              </p>
+            ))
+          }
         </div>
 
-        <div class="mx-auto mt-14 grid max-w-4xl gap-4 rounded-2xl border border-cream-dim/10 bg-base p-6 md:grid-cols-2 md:p-8">
-          <div class="rounded-xl bg-surface p-5">
+        <div class="mx-auto mt-14 grid max-w-4xl gap-4 rounded-3xl border border-cream-dim/10 bg-base p-6 shadow-[0_24px_48px_-16px_rgb(0_0_0_/_0.5)] md:grid-cols-2 md:p-8" data-reveal>
+          <div class="rounded-2xl border border-clay/20 bg-surface p-6">
             <h3 class="mb-2 text-sm font-bold uppercase tracking-wider text-clay">
-              Traditional Web Designer
+              {whyFail.traditionalLabel}
             </h3>
-            <p class="text-cream-dim/80">Pretty Layout + "Contact Us" Form + Zero Leads ❌</p>
+            <p class="text-cream-dim/80">{whyFail.traditionalBody}</p>
           </div>
-          <div class="rounded-xl bg-forest/10 p-5">
+          <div class="rounded-2xl border border-forest/30 bg-forest/10 p-6">
             <h3 class="mb-2 text-sm font-bold uppercase tracking-wider text-sand">
-              Ace Static Creatives
+              {whyFail.aceLabel}
             </h3>
-            <p class="text-cream">Digital persuasion + Bulletproof Tech + WhatsApp Sales Engine <img src="https://img.icons8.com/?size=100&id=VFaz7MkjAiu0&format=png&color=000000" alt="" class="inline-block h-5 w-5 invert" loading="lazy" decoding="async" /></p>
+            <p class="text-cream">{whyFail.aceBody}</p>
           </div>
         </div>
 
-        <div class="mx-auto mt-14 max-w-4xl">
+        <div class="mx-auto mt-14 max-w-4xl" data-reveal>
           <p class="text-center text-lg leading-relaxed text-cream-dim">
-            We realized Guyanese service providers and business owners didn't need more "digital
-            art." They needed an
-            <span class="font-bold text-cream">automated, 24/7 Digital Salesman</span>
-            that works around the clock to turn cold traffic into pre-qualified leads.
+            {whyFail.realizationStart}
+            <span class="font-bold text-cream"> {whyFail.realizationEmphasis} </span>
+            {whyFail.realizationEnd}
           </p>
         </div>
       </div>
     </section>
 
     <!-- CORE PILLARS -->
-    <section class="px-6 py-24">
-      <div class="mx-auto max-w-6xl">
-        <div class="mb-16 text-center">
+    <section class="relative px-6 py-24 lg:py-32">
+      <div class="bg-glow-sand pointer-events-none absolute inset-0" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-6xl">
+        <div class="mb-16 text-center" data-reveal>
           <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
-            The Ace Static Standards
+            {pillars.heading}
           </h2>
           <p class="mx-auto mt-4 max-w-2xl text-lg text-cream-dim/80">
-            The four pillars that define every system we build.
+            {pillars.subheading}
           </p>
         </div>
 
         <div class="grid gap-6 md:grid-cols-2">
           {
-            pillars.map((pillar) => (
-              <div class="rounded-2xl border border-cream-dim/10 bg-surface p-8 transition hover:border-sand/40">
-                <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-forest text-sm font-black text-cream">
+            pillars.items.map((pillar, i) => (
+              <div
+                class="card-elevated group relative overflow-hidden rounded-2xl border border-cream-dim/10 bg-surface p-8 hover:border-sand/40"
+                data-reveal
+                style={`--reveal-delay: ${i * 90}ms`}
+              >
+                <span class="pointer-events-none absolute -right-4 -top-6 text-[6rem] font-black leading-none text-cream/[0.04] transition-colors group-hover:text-sand/[0.07]" aria-hidden="true">
+                  {pillar.number}
+                </span>
+                <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-forest text-sm font-black text-cream shadow-[0_8px_20px_-8px_var(--color-forest)] transition-transform group-hover:scale-105">
                   {pillar.number}
                 </div>
                 <h3 class="text-xl font-bold text-cream">{pillar.title}</h3>
@@ -127,45 +108,54 @@ const pillars = [
     </section>
 
     <!-- MISSION STATEMENT -->
-    <section class="bg-surface px-6 py-24 text-center">
-      <div class="mx-auto max-w-4xl">
+    <section class="bg-surface px-6 py-24 text-center lg:py-32">
+      <div class="mx-auto max-w-4xl" data-reveal>
         <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
-          We Measure Our Success On Your Cash Register, Not Design Awards.
+          {mission.heading}
         </h2>
-        <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-cream-dim/80">
-          At Ace Static Creatives, our core focus is simple:
-          <span class="font-semibold text-cream">to help local businesses claim their market dominance.</span>
-        </p>
-        <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-cream-dim/80">
-          Whether you are a local courier service, a growing contractor, a spa owner, or a
-          specialized professional service, you deserve enterprise-grade digital systems without
-          corporate bloat or hidden fees. We act as your fractional digital growth team—handling
-          the tech, the copy, and the management so you can focus entirely on running your
-          operations and fulfilling sales.
-        </p>
+        {
+          mission.paragraphs.map((p) => (
+            <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-cream-dim/80">
+              {p.before}
+              {p.emphasis && <span class="font-semibold text-cream"> {p.emphasis}</span>}
+            </p>
+          ))
+        }
       </div>
     </section>
 
     <!-- FINAL CTA -->
-    <section class="px-6 py-24 text-center">
-      <div class="mx-auto max-w-4xl rounded-[2rem] border border-cream-dim/10 bg-gradient-to-br from-surface to-base p-8 md:p-16">
-        <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
-          Ready To Put A 24/7 Digital Salesman To Work For Your Business?
-        </h2>
-        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-cream-dim/80">
-          You don't need to take our word for it. Let us prove it to you before you spend a single
-          cent on setup fees.
-        </p>
-        <div class="mt-10">
-          <FreeMockupModal triggerLabel="Tap Here To Claim Your FREE Custom Digital Salesman Mockup" />
-        </div>
-        <div class="mx-auto mt-10 max-w-xl text-left">
-          <p class="mb-3 font-bold text-cream">What happens next?</p>
-          <ol class="list-decimal space-y-2 pl-5 text-cream-dim/80">
-            <li>Fill out our 20-second questionnaire.</li>
-            <li>We build a custom preview tailored to your exact industry.</li>
-            <li>You review it on WhatsApp—zero pressure, zero obligation.</li>
-          </ol>
+    <section class="px-6 py-24 text-center lg:py-28">
+      <div
+        class="relative mx-auto max-w-4xl overflow-hidden rounded-[2.5rem] border border-cream-dim/10 bg-gradient-to-br from-surface via-surface to-forest/10 p-8 shadow-[0_32px_80px_-24px_rgb(0_0_0_/_0.7)] md:p-16"
+        data-reveal
+      >
+        <div class="bg-dot-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
+        <div class="relative">
+          <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
+            {finalCta.heading}
+          </h2>
+          <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-cream-dim/80">
+            {finalCta.body}
+          </p>
+          <div class="mt-10">
+            <FreeMockupModal triggerLabel={finalCta.cta} />
+          </div>
+          <div class="mx-auto mt-12 max-w-xl rounded-2xl border border-cream-dim/10 bg-base/70 p-6 text-left backdrop-blur-sm">
+            <p class="mb-4 font-bold text-cream">{finalCta.nextHeading}</p>
+            <ol class="space-y-3 text-cream-dim/80">
+              {
+                finalCta.nextSteps.map((step, i) => (
+                  <li class="flex items-start gap-3">
+                    <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-sand/40 bg-surface text-xs font-black text-sand">
+                      {i + 1}
+                    </span>
+                    <span class="pt-0.5">{step}</span>
+                  </li>
+                ))
+              }
+            </ol>
+          </div>
         </div>
       </div>
     </section>

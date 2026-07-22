@@ -1,79 +1,66 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import FreeMockupModal from '../components/FreeMockupModal.astro';
+import { seo, portfolio } from '../config/site';
 
-const title = 'Portfolio | Ace Static Creatives';
-const description =
-  'See how Ace Static Creatives builds fast static DIGITAL SALESMAN, scroll-stopping ads, and persuasive copy for local Guyanese businesses.';
-
-const projects = [
-  {
-    title: 'Specialist Cleaning Solutions',
-    category: 'Multi-Service Business Site',
-    description:
-      'A full-service cleaning and maintenance website for a Georgetown-based company handling residential, commercial, and industrial jobs across Guyana.',
-    url: 'https://specialcleaningsolutions.com/',
-    image: 'https://api.microlink.io/?url=https%3A%2F%2Fspecialcleaningsolutions.com%2F&screenshot=true&meta=false&embed=screenshot.url',
-  },
-  {
-    title: 'Mendonca Global Gateway',
-    category: 'Logistics Platform',
-    description:
-      'A US-to-Guyana air freight logistics site with personal US shipping addresses, real-time tracking flow, and Georgetown & Mabaruma pickup options.',
-    url: 'https://mendoncagg.com/',
-    image: 'https://api.microlink.io/?url=https%3A%2F%2Fmendoncagg.com%2F&screenshot=true&meta=false&embed=screenshot.url',
-  },
-];
+const { hero, projects, visitLabel, finalCta } = portfolio;
 ---
 
-<Layout title={title} description={description}>
+<Layout title={seo.portfolio.title} description={seo.portfolio.description}>
   <main class="w-full overflow-hidden">
-    <section class="px-6 pb-16 pt-28 text-center">
-      <span class="inline-block rounded-full border border-sand/30 bg-surface-2 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-sand">
-        Portfolio
-      </span>
-      <h1 class="mx-auto mt-6 max-w-4xl text-4xl font-black leading-tight tracking-tight text-cream md:text-6xl">
-        Work that <span class="text-sand">speaks for itself</span>
-      </h1>
-      <p class="mx-auto mt-6 max-w-2xl text-lg text-cream-dim/80 md:text-xl">
-        Fast DIGITAL SALESMAN, bold ads, and persuasive copy built for real Guyanese small businesses.
-      </p>
+    <section class="relative px-6 pb-16 pt-24 text-center lg:pt-32">
+      <div class="bg-glow-sand pointer-events-none absolute inset-0" aria-hidden="true"></div>
+      <div class="relative" data-reveal>
+        <span class="inline-block rounded-full border border-sand/30 bg-surface-2 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-sand">
+          {hero.badge}
+        </span>
+        <h1 class="mx-auto mt-6 max-w-4xl text-balance text-4xl font-black leading-tight tracking-tight text-cream md:text-6xl">
+          {hero.headlineStart} <span class="text-sand">{hero.headlineHighlight}</span>
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-cream-dim/80 md:text-xl">
+          {hero.subheadline}
+        </p>
+      </div>
     </section>
 
     <section class="px-6 py-20">
       <div class="mx-auto max-w-6xl">
-        <div class="grid gap-8 lg:grid-cols-2">
+        <div class="grid gap-8 lg:grid-cols-2 lg:gap-10">
           {
-            projects.map((project) => (
+            projects.map((project, i) => (
               <a
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="group block overflow-hidden rounded-2xl border border-cream-dim/10 bg-surface transition hover:border-sand/40"
+                class="card-elevated group block overflow-hidden rounded-3xl border border-cream-dim/10 bg-surface hover:border-sand/40"
+                data-reveal
+                style={`--reveal-delay: ${i * 120}ms`}
               >
                 <div class="relative h-56 overflow-hidden bg-gradient-to-br from-sand/10 to-clay/10 md:h-72">
                   <img
                     src={project.image}
                     alt={`Preview of ${project.title}`}
-                    class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
+                    class="h-full w-full object-cover object-top transition duration-700 group-hover:scale-105"
                     loading="lazy"
                     decoding="async"
                   />
-                  <span class="absolute left-4 top-4 rounded-full border border-cream-dim/20 bg-base/80 px-3 py-1 text-xs font-bold uppercase tracking-wider text-sand backdrop-blur-sm">
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface/90 via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-40" aria-hidden="true" />
+                  <span class="absolute left-4 top-4 rounded-full border border-cream-dim/20 bg-base/85 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-sand backdrop-blur-md">
                     {project.category}
                   </span>
                 </div>
                 <div class="p-6 md:p-8">
-                  <h3 class="text-2xl font-bold text-cream">{project.title}</h3>
+                  <h3 class="text-2xl font-bold text-cream transition-colors group-hover:text-sand">{project.title}</h3>
                   <p class="mt-3 leading-relaxed text-cream-dim/70">{project.description}</p>
-                  <p class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-sand">
-                    Visit live site
+                  <p class="mt-6 inline-flex items-center gap-2 rounded-full border border-sand/30 px-4 py-2 text-sm font-bold text-sand transition-colors group-hover:border-sand/60 group-hover:bg-sand/10">
+                    {visitLabel}
                     <svg
-                      class="h-4 w-4 transition group-hover:translate-x-1"
+                      class="h-4 w-4 transition-transform group-hover:translate-x-1"
                       fill="none"
                       stroke="currentColor"
                       stroke-width="2"
                       viewBox="0 0 24 24"
+                      aria-hidden="true"
                     >
                       <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -86,16 +73,22 @@ const projects = [
       </div>
     </section>
 
-    <section class="px-6 py-24 text-center">
-      <div class="mx-auto max-w-4xl rounded-[2rem] border border-cream-dim/10 bg-gradient-to-br from-surface to-base p-8 md:p-16">
-        <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
-          Ready to be our next win?
-        </h2>
-        <p class="mx-auto mt-6 max-w-2xl text-lg text-cream-dim/80">
-          Tell us about your business and we'll build a free mobile-optimized mockup this week.
-        </p>
-        <div class="mt-10">
-          <FreeMockupModal triggerLabel="Claim Your FREE 24/7 Digital Salesman Mockup" />
+    <section class="px-6 pb-28 pt-8 text-center">
+      <div
+        class="relative mx-auto max-w-4xl overflow-hidden rounded-[2.5rem] border border-cream-dim/10 bg-gradient-to-br from-surface via-surface to-forest/10 p-8 shadow-[0_32px_80px_-24px_rgb(0_0_0_/_0.7)] md:p-16"
+        data-reveal
+      >
+        <div class="bg-dot-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
+        <div class="relative">
+          <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
+            {finalCta.heading}
+          </h2>
+          <p class="mx-auto mt-6 max-w-2xl text-lg text-cream-dim/80">
+            {finalCta.body}
+          </p>
+          <div class="mt-10">
+            <FreeMockupModal triggerLabel={finalCta.cta} />
+          </div>
         </div>
       </div>
     </section>

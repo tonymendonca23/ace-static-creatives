@@ -3,7 +3,14 @@
  * FreeMockupModal.astro
  * A 4-step qualifying questionnaire modal that redirects the user to WhatsApp
  * with a pre-formatted message containing their answers.
+ *
+ * All copy, options, and the WhatsApp message template live in
+ * src/config/site.ts (`mockupForm`, `contact`).
+ *
+ * Each instance is scoped with a unique id so multiple triggers/modals can
+ * coexist on the same page without interfering with each other.
  */
+import { contact, mockupForm } from '../config/site';
 
 export interface Props {
   /** Phone number in international format without the leading + */
@@ -15,38 +22,28 @@ export interface Props {
 }
 
 const {
-  phone = '5926751884',
-  triggerLabel = 'Claim Your Free Mockup',
+  phone = contact.whatsappNumber,
+  triggerLabel = mockupForm.defaultTriggerLabel,
   triggerClass = '',
 } = Astro.props;
 
-const industries = [
-  'Local Service',
-  'Beauty, Health & Spa',
-  'Professional Services',
-  'E-Commerce / Retail',
-  'Other',
-];
+const uid = Math.random().toString(36).slice(2, 9);
 
-const statuses = [
-  'No website yet',
-  'Have a site but 0 leads',
-  'Need an update/overhaul',
-];
+const { steps } = mockupForm;
 
-const goals = [
-  'Get pre-qualified leads via WhatsApp',
-  'Automate sales & brand',
-  'Scale paid ads',
-];
+const messageConfig = {
+  intro: mockupForm.messageIntro,
+  outro: mockupForm.messageOutro,
+  mockupValue: mockupForm.mockupValue,
+};
 ---
 
 <!-- Trigger button -->
 <button
   type="button"
-  data-mockup-trigger
+  data-mockup-trigger={uid}
   class:list={[
-    'inline-flex items-center justify-center gap-2 rounded-full bg-forest px-8 py-4 font-bold text-cream transition-all duration-300 hover:-translate-y-1 hover:bg-forest/90',
+    'inline-flex items-center justify-center gap-2 rounded-full bg-forest px-8 py-4 text-center font-bold text-cream shadow-[0_12px_28px_-10px_var(--color-forest)] transition-all duration-300 hover:-translate-y-1 hover:brightness-110 active:translate-y-0',
     triggerClass,
   ]}
 >
@@ -66,19 +63,19 @@ const goals = [
 
 <!-- Modal overlay -->
 <div
-  data-mockup-modal
+  data-mockup-modal={uid}
   class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 px-4 backdrop-blur-sm"
   role="dialog"
   aria-modal="true"
-  aria-labelledby="mockup-modal-title"
+  aria-labelledby={`mockup-modal-title-${uid}`}
 >
   <div
-    class="relative w-full max-w-lg overflow-hidden rounded-2xl border border-cream-dim/10 bg-surface shadow-2xl"
+    class="relative max-h-[92vh] w-full max-w-lg overflow-y-auto overflow-x-hidden rounded-3xl border border-cream-dim/15 bg-surface shadow-[0_32px_80px_-16px_rgb(0_0_0_/_0.8)]"
   >
     <!-- Close button -->
     <button
       type="button"
-      data-mockup-close
+      data-mockup-close={uid}
       class="absolute right-3 top-3 z-10 rounded-full bg-base/80 p-2 text-cream transition hover:bg-clay hover:text-cream"
       aria-label="Close modal"
     >
@@ -97,15 +94,15 @@ const goals = [
     <!-- Progress bar -->
     <div class="border-b border-cream-dim/10 bg-base px-6 py-4">
       <div class="flex items-center justify-between">
-        <span data-mockup-step-label class="text-xs font-bold uppercase tracking-wider text-sand">
+        <span data-mockup-step-label={uid} class="text-xs font-bold uppercase tracking-wider text-sand">
           Step 1 of 4
         </span>
-        <span class="text-xs text-cream-dim/60">Free mockup</span>
+        <span class="text-xs text-cream-dim/60">{mockupForm.progressTag}</span>
       </div>
       <div class="mt-3 h-1.5 w-full rounded-full bg-surface-2">
         <div
-          data-mockup-progress
-          class="h-full rounded-full bg-forest transition-all duration-500"
+          data-mockup-progress={uid}
+          class="h-full rounded-full bg-gradient-to-r from-forest to-sand transition-all duration-500"
           style="width: 25%"
         >
         </div>
@@ -113,16 +110,16 @@ const goals = [
     </div>
 
     <!-- Form -->
-    <form data-mockup-form class="px-6 py-8 md:px-8">
+    <form data-mockup-form={uid} class="px-6 py-8 md:px-8">
       <!-- Step 1: Industry -->
       <fieldset data-step="1" class="mockup-step space-y-5">
-        <legend class="text-2xl font-black leading-tight text-cream" id="mockup-modal-title">
-          What type of business are you operating?
+        <legend class="text-2xl font-black leading-tight text-cream" id={`mockup-modal-title-${uid}`}>
+          {steps.industry.question}
         </legend>
         <div class="grid gap-3">
           {
-            industries.map((option) => (
-              <label class="group relative flex cursor-pointer items-center gap-3 rounded-xl border border-cream-dim/10 bg-base p-4 transition hover:border-sand/40 hover:bg-surface-2">
+            steps.industry.options.map((option) => (
+              <label class="group relative flex cursor-pointer items-center gap-3 rounded-xl border border-cream-dim/10 bg-base p-4 transition hover:border-sand/40 hover:bg-surface-2 has-checked:border-forest has-checked:bg-forest/10">
                 <input
                   type="radio"
                   name="industry"
@@ -140,12 +137,12 @@ const goals = [
       <!-- Step 2: Website Status -->
       <fieldset data-step="2" class="mockup-step hidden space-y-5">
         <legend class="text-2xl font-black leading-tight text-cream">
-          What is the current state of your website?
+          {steps.status.question}
         </legend>
         <div class="grid gap-3">
           {
-            statuses.map((option) => (
-              <label class="group relative flex cursor-pointer items-center gap-3 rounded-xl border border-cream-dim/10 bg-base p-4 transition hover:border-sand/40 hover:bg-surface-2">
+            steps.status.options.map((option) => (
+              <label class="group relative flex cursor-pointer items-center gap-3 rounded-xl border border-cream-dim/10 bg-base p-4 transition hover:border-sand/40 hover:bg-surface-2 has-checked:border-forest has-checked:bg-forest/10">
                 <input
                   type="radio"
                   name="status"
@@ -163,12 +160,12 @@ const goals = [
       <!-- Step 3: Primary Goal -->
       <fieldset data-step="3" class="mockup-step hidden space-y-5">
         <legend class="text-2xl font-black leading-tight text-cream">
-          What is your main focus for the next 30 days?
+          {steps.goal.question}
         </legend>
         <div class="grid gap-3">
           {
-            goals.map((option) => (
-              <label class="group relative flex cursor-pointer items-center gap-3 rounded-xl border border-cream-dim/10 bg-base p-4 transition hover:border-sand/40 hover:bg-surface-2">
+            steps.goal.options.map((option) => (
+              <label class="group relative flex cursor-pointer items-center gap-3 rounded-xl border border-cream-dim/10 bg-base p-4 transition hover:border-sand/40 hover:bg-surface-2 has-checked:border-forest has-checked:bg-forest/10">
                 <input
                   type="radio"
                   name="goal"
@@ -186,32 +183,32 @@ const goals = [
       <!-- Step 4: Contact Capture -->
       <fieldset data-step="4" class="mockup-step hidden space-y-5">
         <legend class="text-2xl font-black leading-tight text-cream">
-          Where should we send your free mockup?
+          {steps.capture.question}
         </legend>
         <div class="space-y-4">
           <div>
-            <label for="mockup-business" class="mb-2 block text-sm font-medium text-cream-dim">
-              Business Name
+            <label for={`mockup-business-${uid}`} class="mb-2 block text-sm font-medium text-cream-dim">
+              {steps.capture.businessLabel}
             </label>
             <input
               type="text"
-              id="mockup-business"
+              id={`mockup-business-${uid}`}
               name="businessName"
               required
-              placeholder="e.g. Georgetown Auto Parts"
+              placeholder={steps.capture.businessPlaceholder}
               class="w-full rounded-xl border border-cream-dim/10 bg-base px-4 py-3 text-cream placeholder:text-cream-dim/40 focus:border-forest focus:outline-none focus:ring-2 focus:ring-forest/20"
             />
           </div>
           <div>
-            <label for="mockup-client" class="mb-2 block text-sm font-medium text-cream-dim">
-              Your Name
+            <label for={`mockup-client-${uid}`} class="mb-2 block text-sm font-medium text-cream-dim">
+              {steps.capture.nameLabel}
             </label>
             <input
               type="text"
-              id="mockup-client"
+              id={`mockup-client-${uid}`}
               name="clientName"
               required
-              placeholder="e.g. Jane Doe"
+              placeholder={steps.capture.namePlaceholder}
               class="w-full rounded-xl border border-cream-dim/10 bg-base px-4 py-3 text-cream placeholder:text-cream-dim/40 focus:border-forest focus:outline-none focus:ring-2 focus:ring-forest/20"
             />
           </div>
@@ -222,53 +219,55 @@ const goals = [
       <div class="mt-8 flex items-center justify-between gap-3">
         <button
           type="button"
-          data-mockup-back
+          data-mockup-back={uid}
           class="hidden rounded-full border border-cream-dim/20 px-6 py-3 text-sm font-bold text-cream transition hover:border-sand hover:text-sand"
         >
-          Back
+          {mockupForm.backLabel}
         </button>
         <button
           type="button"
-          data-mockup-next
-          class="ml-auto rounded-full bg-forest px-8 py-3 text-sm font-bold text-cream transition hover:bg-forest/90 disabled:cursor-not-allowed disabled:opacity-50"
+          data-mockup-next={uid}
+          class="ml-auto rounded-full bg-forest px-8 py-3 text-sm font-bold text-cream transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          Next
+          {mockupForm.nextLabel}
         </button>
         <button
           type="submit"
-          data-mockup-submit
-          class="hidden w-full items-center justify-center gap-2 rounded-full bg-forest px-6 py-4 text-sm font-bold text-cream transition hover:bg-forest/90 sm:text-base"
+          data-mockup-submit={uid}
+          class="hidden w-full items-center justify-center gap-2 rounded-full bg-forest px-6 py-4 text-sm font-bold text-cream shadow-[0_12px_28px_-10px_var(--color-forest)] transition hover:brightness-110 sm:text-base"
         >
           <span>📲</span>
-          <span>SUBMIT & CLAIM FREE MOCKUP VIA WHATSAPP</span>
+          <span>{mockupForm.submitLabel}</span>
         </button>
       </div>
 
       <p class="mt-4 text-center text-xs text-cream-dim/60">
-        Takes 20 seconds. Zero obligation.
+        {mockupForm.disclaimer}
       </p>
     </form>
   </div>
 </div>
 
-<script define:vars={{ phone }}>
+<script define:vars={{ phone, uid, messageConfig }}>
   /**
-   * Multi-step modal logic.
+   * Multi-step modal logic, scoped to this instance via `uid`.
    * - Validates the current step before advancing.
    * - Builds a pre-formatted WhatsApp message from the captured answers.
    * - Redirects the user to the wa.me deep link on submit.
    */
   (function () {
-    const modal = document.querySelector('[data-mockup-modal]');
-    const trigger = document.querySelector('[data-mockup-trigger]');
-    const closeBtn = document.querySelector('[data-mockup-close]');
-    const form = document.querySelector('[data-mockup-form]');
-    const steps = Array.from(document.querySelectorAll('.mockup-step'));
-    const nextBtn = document.querySelector('[data-mockup-next]');
-    const backBtn = document.querySelector('[data-mockup-back]');
-    const submitBtn = document.querySelector('[data-mockup-submit]');
-    const progress = document.querySelector('[data-mockup-progress]');
-    const stepLabel = document.querySelector('[data-mockup-step-label]');
+    const q = (attr) => document.querySelector(`[${attr}="${uid}"]`);
+
+    const modal = q('data-mockup-modal');
+    const trigger = q('data-mockup-trigger');
+    const closeBtn = q('data-mockup-close');
+    const form = q('data-mockup-form');
+    const steps = Array.from(form.querySelectorAll('.mockup-step'));
+    const nextBtn = q('data-mockup-next');
+    const backBtn = q('data-mockup-back');
+    const submitBtn = q('data-mockup-submit');
+    const progress = q('data-mockup-progress');
+    const stepLabel = q('data-mockup-step-label');
 
     let currentStep = 1;
     const totalSteps = steps.length;
@@ -374,14 +373,14 @@ const goals = [
 
       // Compose the WhatsApp message
       const message =
-        `Hi Ace Static Creatives! I just requested my free mockup on your site.\n\n` +
+        `${messageConfig.intro}\n\n` +
         `📌 Business Name: ${businessName}\n` +
         `👤 Name: ${clientName}\n` +
         `🏢 Industry: ${industry}\n` +
         `🌐 Current Site Status: ${status}\n` +
         `🎯 Primary Goal: ${goal}\n` +
-        `💰 Mockup Value: $99,999 GYD\n\n` +
-        `Looking forward to seeing the preview!`;
+        `💰 Mockup Value: ${messageConfig.mockupValue}\n\n` +
+        `${messageConfig.outro}`;
 
       // Build the secure wa.me deep link
       const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
@@ -397,6 +396,7 @@ const goals = [
     backBtn.addEventListener('click', prevStep);
     form.addEventListener('submit', handleSubmit);
     form.addEventListener('change', validateCurrentStep);
+    form.addEventListener('input', validateCurrentStep);
 
     // Close on overlay click or Escape key
     modal.addEventListener('click', (event) => {

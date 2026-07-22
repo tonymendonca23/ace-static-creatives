@@ -2,16 +2,32 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { colors, seo } from '../config/site';
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const {
-  title = 'Ace Static Creatives | High-Performance Digital Salesman',
-  description = 'Ace Static Creatives - Your 24/7 Digital Salesman in Guyana. High-performance static web development and ad strategies for local businesses.',
-} = Astro.props;
+const { title = seo.default.title, description = seo.default.description } = Astro.props;
+
+/* Inject brand colors from the central config as CSS variables so the whole
+   design system (global.css @theme) is driven by src/config/site.ts. */
+const brandVars = `
+  :root {
+    --brand-base: ${colors.base};
+    --brand-surface: ${colors.surface};
+    --brand-surface-2: ${colors.surface2};
+    --brand-cream: ${colors.cream};
+    --brand-cream-dim: ${colors.creamDim};
+    --brand-sand: ${colors.sand};
+    --brand-olive: ${colors.olive};
+    --brand-forest: ${colors.forest};
+    --brand-clay: ${colors.clay};
+    --brand-clay-dark: ${colors.clayDark};
+    --brand-warm-blue: ${colors.warmBlue};
+  }
+`;
 ---
 
 <!doctype html>
@@ -24,6 +40,7 @@ const {
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<title>{title}</title>
+		<style set:html={brandVars}></style>
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,6 +50,25 @@ const {
 		<Header />
 		<slot />
 		<Footer />
+		<script>
+			// Scroll-reveal: adds .is-revealed when [data-reveal] elements enter view.
+			if ('IntersectionObserver' in window) {
+				const observer = new IntersectionObserver(
+					(entries) => {
+						for (const entry of entries) {
+							if (entry.isIntersecting) {
+								entry.target.classList.add('is-revealed');
+								observer.unobserve(entry.target);
+							}
+						}
+					},
+					{ threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+				);
+				document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+			} else {
+				document.documentElement.classList.add('no-observer');
+			}
+		</script>
 	</body>
 </html>
 

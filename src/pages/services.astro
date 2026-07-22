@@ -1,213 +1,111 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import FreeMockupModal from '../components/FreeMockupModal.astro';
+import { seo, services, discountedPrice } from '../config/site';
 
-const title = 'Services | Ace Static Creatives';
-const description =
-  'High-converting sales engines, scroll-stopping static ads, and persuasive ad copy for Guyanese businesses. Claim your free 30-minute revenue audit.';
-
-const pains = [
-  {
-    title: 'The "Pretty Website" Trap',
-    body: 'You paid a web designer who delivered a nice-looking site, but it brings in zero leads and zero calls.',
-  },
-  {
-    title: 'The Feast-or-Famine Rollercoaster',
-    body: 'You rely almost entirely on word-of-mouth or random referrals, leaving your monthly revenue completely unpredictable.',
-  },
-  {
-    title: 'Wasted Ad Budget',
-    body: 'You’ve thrown money at Facebook or Google ads, only to get clicks from tire-kickers who vanish when you tell them your prices.',
-  },
-  {
-    title: 'Working IN Your Business, Not ON It',
-    body: 'You’re trapped doing low-level administrative chores instead of focusing on high-leverage, revenue-producing activities.',
-  },
-];
-
-const comparison = [
-  {
-    standard: 'Pretty graphics with zero psychology',
-    ace: 'Digital Persuasion that speaks directly to your dream buyer\'s fears and desires.',
-  },
-  {
-    standard: 'Generic "Contact Us" forms that get ignored',
-    ace: 'High-Value Lead Captures & Automated Funnels that capture leads 24/7/365.',
-  },
-  {
-    standard: 'Slow, cluttered pages that lose visitors',
-    ace: 'Lightning-Fast, Mobile-First Architecture built to rank and convert instantly.',
-  },
-  {
-    standard: 'Vague claims like "Friendly & Experienced"',
-    ace: 'Godfather Offers that make it impossible for prospects to say no.',
-  },
-];
-
-const DISCOUNT = 0.35;
-
-function discountedPrice(monthly: string) {
-  const numeric = Number(monthly.replace(/[^0-9]/g, ''));
-  const discounted = Math.round(numeric * (1 - DISCOUNT));
-  return `$${discounted.toLocaleString()} GYD/mo`;
-}
-
-const packages = [
-  {
-    name: 'Launch Engine',
-    tag: 'Start risk-free',
-    priceSetup: '$0 GYD upfront',
-    priceMonthly: '$35,000 GYD/mo',
-    firstMonthPrice: discountedPrice('$35,000 GYD/mo'),
-    renewal: 'Renews at $35,000 GYD/mo',
-    note: 'Client runs their own ads',
-    features: [
-      '5-Page Premium Web System (Home, Services, About, Contact, Gallery)',
-      '1 Custom Interactive Tool (e.g., Price Calculator / Service Toggle)',
-      '2 Premium Static Ad Creatives + 2 High-Converting Written Ad Copies',
-      'Direct WhatsApp Lead Routing',
-      'Complete Digital Management (Premium Hosting & Security + 2 Free Monthly Content Updates)',
-      'Monthly Performance Report via WhatsApp',
-    ],
-    cta: 'Get Started for $0 GYD Upfront',
-  },
-  {
-    name: 'Local Authority',
-    tag: 'Most popular',
-    priceSetup: '$20,000 GYD setup',
-    priceMonthly: '$50,000 GYD/mo',
-    firstMonthPrice: discountedPrice('$50,000 GYD/mo'),
-    renewal: 'Renews at $50,000 GYD/mo',
-    note: 'Client provides their own Meta ad budget',
-    features: [
-      'Everything in Launch Engine (5-Page Premium Web System)',
-      'Active Facebook Ad Management (Campaign monitoring & tuning)',
-      '3 High-Converting Written Ad Copies + 3 Premium Static Ad Creatives',
-      'Local SEO Sweep (Google Maps & local search ranking)',
-      '2x Per Month Campaign Performance Tuning',
-      'Complete Digital Landlord Management (Hosting & Security)',
-    ],
-    cta: 'Claim Local Authority',
-    featured: true,
-  },
-  {
-    name: 'Hyper-Growth Engine',
-    tag: 'Maximum dominance',
-    priceSetup: '$40,000 GYD setup',
-    priceMonthly: '$85,000 GYD/mo',
-    firstMonthPrice: discountedPrice('$85,000 GYD/mo'),
-    renewal: 'Renews at $85,000 GYD/mo',
-    note: 'Client provides their own Meta ad budget',
-    features: [
-      'Everything in Local Authority (5-Page Premium Web System)',
-      'Advanced Facebook Ad Management (Daily tracking, scaling, Meta Ads Manager & Advanced Pixel Tracking)',
-      '5 High-Converting Written Ad Copies + 5 Static Ad Creatives (Fresh visuals deployed monthly for maximum split-testing)',
-      'Custom Lead Capture Dashboard & Integrated Lead Routing Automation',
-      'Weekly Campaign Performance Tuning & Strategy Updates',
-      'Priority Digital Landlord Management (Hosting, Security & instant updates)',
-    ],
-    cta: 'Dominate Your Market',
-  },
-];
+const { hero, pain, comparison, packages, guarantee, finalCta } = services;
 ---
 
-<Layout title={title} description={description}>
+<Layout title={seo.services.title} description={seo.services.description}>
   <main class="w-full overflow-hidden">
     <!-- HERO -->
-    <section class="px-6 pb-20 pt-10 text-center lg:pt-14">
-      <div class="mx-auto max-w-5xl">
-        <p class="mx-auto max-w-3xl text-xs font-bold uppercase tracking-wider text-sand sm:text-sm">
-          Attention Guyanese business owners & service providers: stop wasting money on websites
-          that do nothing but sit there looking pretty!
+    <section class="relative px-6 pb-20 pt-14 text-center lg:pb-24 lg:pt-20">
+      <div class="bg-glow-forest pointer-events-none absolute inset-0" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-5xl" data-reveal>
+        <p class="mx-auto max-w-3xl rounded-full border border-clay/30 bg-clay/10 px-5 py-2 text-xs font-bold uppercase tracking-wider text-sand sm:text-sm">
+          {hero.eyebrow}
         </p>
         <h1
-          class="mx-auto mt-6 text-4xl font-black leading-[1.1] tracking-tight text-cream md:text-5xl lg:text-6xl"
+          class="mx-auto mt-8 text-balance text-4xl font-black leading-[1.08] tracking-tight text-cream md:text-5xl lg:text-6xl"
         >
-          We Build High-Converting Sales Engines That Turn Cold Visitors Into Loyal, High-Paying
-          Clients On Autopilot Or You Don't Pay.
+          {hero.headline}
         </h1>
         <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-cream-dim/80 md:text-xl">
-          Most web agencies build you a "pretty digital brochure" and leave you to figure out the
-          rest. We build complete, Digital Persuasion conversion systems engineered to dominate your
-          local market, ring your cash register, and scale your revenue fast.
+          {hero.subheadline}
         </p>
         <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <FreeMockupModal
-            triggerLabel="Claim Your FREE 24/7 Digital Salesman Mockup"
+            triggerLabel={hero.cta}
             triggerClass="max-w-xl px-6 py-4 text-sm sm:text-base"
           />
         </div>
         <p class="mt-4 text-sm text-cream-dim/60">
-          No pushy sales pitch. No obligation. Just a clear roadmap to scale.
+          {hero.reassurance}
         </p>
       </div>
     </section>
 
     <!-- PAIN SECTION -->
-    <section class="bg-surface px-6 py-24">
-      <div class="mx-auto max-w-6xl">
-        <div class="mb-16 text-center">
+    <section class="relative bg-surface px-6 py-24 lg:py-32">
+      <div class="bg-dot-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-6xl">
+        <div class="mb-16 text-center" data-reveal>
           <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
-            Are You Tired Of Playing "Digital Guesswork" With Your Business?
+            {pain.heading}
           </h2>
           <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-cream-dim/80">
-            Let’s be honest for a second. You didn’t get into business to work 80-hour weeks putting
-            out digital fires, chasing down unqualified leads, or wondering where your next customer
-            is coming from. Does any of this sound painfully familiar?
+            {pain.subheading}
           </p>
         </div>
 
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {
-            pains.map((pain) => (
-              <div class="rounded-2xl border border-cream-dim/10 bg-base p-6">
-                <h3 class="mb-3 text-lg font-bold text-cream">{pain.title}</h3>
-                <p class="text-sm leading-relaxed text-cream-dim/70">{pain.body}</p>
+            pain.cards.map((card, i) => (
+              <div
+                class="card-elevated rounded-2xl border border-cream-dim/10 bg-base p-6 hover:border-clay/40"
+                data-reveal
+                style={`--reveal-delay: ${i * 80}ms`}
+              >
+                <span class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-clay/15 text-lg text-clay" aria-hidden="true">
+                  ✕
+                </span>
+                <h3 class="mb-3 text-lg font-bold text-cream">{card.title}</h3>
+                <p class="text-sm leading-relaxed text-cream-dim/70">{card.body}</p>
               </div>
             ))
           }
         </div>
 
-        <div class="mx-auto mt-14 max-w-4xl rounded-2xl border-l-4 border-clay bg-base p-8">
+        <div class="mx-auto mt-14 max-w-4xl rounded-2xl border-l-4 border-clay bg-base p-8 shadow-[0_16px_40px_-16px_rgb(0_0_0_/_0.6)]" data-reveal>
           <p class="text-lg leading-relaxed text-cream-dim">
-            <span class="font-bold text-clay">Here is the brutal truth:</span> You don't have a
-            traffic problem. You have a conversion problem. If you can’t turn traffic into profit
-            predictably, you don’t have a scalable business, you have an expensive job.
+            <span class="font-bold text-clay">{pain.truthLabel}</span>
+            {pain.truthBody}
           </p>
         </div>
       </div>
     </section>
 
     <!-- FEATURES VS BENEFITS -->
-    <section class="px-6 py-24">
+    <section class="px-6 py-24 lg:py-32">
       <div class="mx-auto max-w-6xl">
-        <div class="mb-16 text-center">
+        <div class="mb-16 text-center" data-reveal>
           <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
-            Why Our High-Converting Systems Out-Perform Standard Websites Every Single Time
+            {comparison.heading}
           </h2>
         </div>
 
-        <div class="overflow-hidden rounded-2xl border border-cream-dim/10">
+        <div class="overflow-hidden rounded-3xl border border-cream-dim/10 shadow-[0_24px_60px_-20px_rgb(0_0_0_/_0.7)]" data-reveal>
           <div class="grid md:grid-cols-2">
             <div class="bg-surface p-8 md:p-10">
               <h3 class="mb-6 text-xl font-bold text-cream-dim/70">
-                What Standard Web Designers Give You 👎
+                {comparison.standardHeading}
               </h3>
               <ul class="space-y-4">
-                {comparison.map((row) => (
+                {comparison.rows.map((row) => (
                   <li class="flex items-start gap-3 text-cream-dim/80">
-                    <span class="mt-1 text-clay">✕</span>
+                    <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-clay/15 text-xs text-clay">✕</span>
                     <span>{row.standard}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div class="bg-forest/10 p-8 md:p-10">
-              <h3 class="mb-6 text-xl font-bold text-sand">What Ace Static Creatives Delivers 👍</h3>
+            <div class="relative bg-forest/10 p-8 md:p-10">
+              <div class="pointer-events-none absolute inset-y-0 left-0 hidden w-px bg-gradient-to-b from-transparent via-sand/30 to-transparent md:block" aria-hidden="true"></div>
+              <h3 class="mb-6 text-xl font-bold text-sand">{comparison.aceHeading}</h3>
               <ul class="space-y-4">
-                {comparison.map((row) => (
+                {comparison.rows.map((row) => (
                   <li class="flex items-start gap-3 text-cream">
-                    <span class="mt-1 text-sand">✓</span>
+                    <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-forest/25 text-xs text-sand">✓</span>
                     <span>{row.ace}</span>
                   </li>
                 ))}
@@ -219,32 +117,37 @@ const packages = [
     </section>
 
     <!-- PACKAGES -->
-    <section class="bg-surface px-6 py-24">
-      <div class="mx-auto max-w-7xl">
-        <div class="mb-16 text-center">
+    <section class="relative bg-surface px-6 py-24 lg:py-32">
+      <div class="bg-glow-sand pointer-events-none absolute inset-0" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-7xl">
+        <div class="mb-16 text-center" data-reveal>
           <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
-            Our Offer Packages
+            {packages.heading}
           </h2>
           <p class="mx-auto mt-4 max-w-2xl text-lg text-cream-dim/80">
-            Presenting an offer so complete, risk-free, and valuable that saying no would be foolish.
+            {packages.subheading}
           </p>
         </div>
 
-        <div class="grid gap-8 lg:grid-cols-3">
+        <div class="grid gap-8 lg:grid-cols-3 lg:items-stretch">
           {
-            packages.map((pkg) => (
+            packages.items.map((pkg, i) => (
               <div
                 class:list={[
-                  'relative flex flex-col rounded-2xl border p-8',
+                  'card-elevated relative flex flex-col rounded-3xl border p-8 pt-10',
                   pkg.featured
-                    ? 'border-forest/60 bg-forest/10'
+                    ? 'border-forest/60 bg-gradient-to-b from-forest/15 to-base shadow-[0_0_60px_-20px_var(--color-forest)] lg:-my-4 lg:py-12'
                     : 'border-cream-dim/10 bg-base',
                 ]}
+                data-reveal
+                style={`--reveal-delay: ${i * 100}ms`}
               >
                 <span
                   class:list={[
-                    'absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold uppercase tracking-wider text-cream',
-                    pkg.featured ? 'bg-forest' : 'bg-surface-2 text-cream-dim',
+                    'absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider',
+                    pkg.featured
+                      ? 'bg-forest text-cream shadow-[0_8px_20px_-6px_var(--color-forest)]'
+                      : 'bg-surface-2 text-cream-dim',
                   ]}
                 >
                   {pkg.tag}
@@ -252,23 +155,26 @@ const packages = [
 
                 <h3 class="text-2xl font-black text-cream">{pkg.name}</h3>
 
-                <div class="mt-4 space-y-1">
+                <div class="mt-5 space-y-1.5 border-b border-cream-dim/10 pb-6">
                   <p class="text-sm text-cream-dim/70">{pkg.priceSetup}</p>
-                  <p class="text-3xl font-black text-sand">{pkg.firstMonthPrice}</p>
+                  <p class="text-3xl font-black text-sand md:text-4xl">{discountedPrice(pkg.priceMonthly)}</p>
                   <p class="text-sm text-cream-dim/60 line-through">{pkg.priceMonthly}</p>
-                  <p class="text-xs font-bold text-forest">35% off your first month</p>
+                  <p class="inline-block rounded-full bg-forest/20 px-3 py-1 text-xs font-bold text-sand">
+                    {packages.discountLabel}
+                  </p>
                   <p class="text-xs text-cream-dim/60">{pkg.renewal}</p>
                 </div>
 
-                <ul class="mt-6 flex-1 space-y-3">
+                <ul class="mt-6 flex-1 space-y-3.5">
                   {pkg.features.map((feature) => (
-                    <li class="flex items-start gap-3 text-sm text-cream-dim">
+                    <li class="flex items-start gap-3 text-sm leading-relaxed text-cream-dim">
                       <svg
                         class="mt-0.5 h-5 w-5 shrink-0 text-sand"
                         fill="none"
                         stroke="currentColor"
                         stroke-width="2"
                         viewBox="0 0 24 24"
+                        aria-hidden="true"
                       >
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
@@ -280,16 +186,7 @@ const packages = [
                 <p class="mt-4 text-xs italic text-cream-dim/50">{pkg.note}</p>
 
                 <div class="mt-8">
-                  <FreeMockupModal
-                    triggerLabel={
-                      pkg.name === 'Launch Engine'
-                        ? 'Get Started For $0 Upfront'
-                        : pkg.name === 'Local Authority'
-                          ? 'Claim Your Digital Salesman'
-                          : 'Dominate Your Market Now'
-                    }
-                    triggerClass="w-full"
-                  />
+                  <FreeMockupModal triggerLabel={pkg.cta} triggerClass="w-full" />
                 </div>
               </div>
             ))
@@ -299,50 +196,50 @@ const packages = [
     </section>
 
     <!-- GUARANTEE -->
-    <section class="px-6 py-24 text-center">
-      <div class="mx-auto max-w-3xl">
-        <div class="mb-8 inline-flex h-16 w-16 items-center justify-center rounded-full bg-forest/20 text-3xl">
+    <section class="px-6 py-24 text-center lg:py-32">
+      <div class="mx-auto max-w-3xl" data-reveal>
+        <div class="mb-8 inline-flex h-20 w-20 items-center justify-center rounded-3xl border border-forest/40 bg-forest/15 text-4xl shadow-[0_0_40px_-12px_var(--color-forest)]">
           🛡️
         </div>
         <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
-          Our Ironclad "Zero-Risk" Guarantee
+          {guarantee.heading}
         </h2>
         <p class="mx-auto mt-6 text-lg leading-relaxed text-cream-dim/80">
-          We are so confident in our direct-response conversion engines that we back every build
-          with a simple guarantee: If your new sales system doesn't generate measurable, qualified
-          leads within 60 days of launch, we will work with you for FREE until it does, or refund
-          your build fee in full. No excuses, no fine print.
+          {guarantee.body}
         </p>
       </div>
     </section>
 
-    <section class="px-6 pb-24">
-      <div class="mx-auto max-w-4xl rounded-[2rem] border border-sand/30 bg-surface px-8 py-16 text-center md:px-16">
-        <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
-          Ready To Take Control Of Your Business Revenue?
-        </h2>
-        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-cream-dim/80">
-          We only work with a select number of business clients each month to ensure every build
-          receives maximum attention and explosive results. Don't let your competitors steal another
-          high-value client out from under you.
-        </p>
-        <div class="mt-10">
-          <FreeMockupModal triggerLabel="Get My Free Custom Mockup" />
+    <!-- FINAL CTA -->
+    <section class="px-6 pb-28">
+      <div
+        class="relative mx-auto max-w-4xl overflow-hidden rounded-[2.5rem] border border-sand/30 bg-gradient-to-br from-surface via-surface to-forest/10 px-8 py-16 text-center shadow-[0_32px_80px_-24px_rgb(0_0_0_/_0.7)] md:px-16"
+        data-reveal
+      >
+        <div class="bg-dot-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
+        <div class="relative">
+          <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
+            {finalCta.heading}
+          </h2>
+          <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-cream-dim/80">
+            {finalCta.body}
+          </p>
+          <div class="mt-10">
+            <FreeMockupModal triggerLabel={finalCta.cta} />
+          </div>
+          <ol class="mx-auto mt-12 max-w-xl space-y-4 text-left text-cream-dim/80">
+            {
+              finalCta.steps.map((step, i) => (
+                <li class="flex items-start gap-4">
+                  <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-sand/40 bg-base text-sm font-black text-sand">
+                    {i + 1}
+                  </span>
+                  <span class="pt-1">{step}</span>
+                </li>
+              ))
+            }
+          </ol>
         </div>
-        <ol class="mx-auto mt-10 max-w-xl space-y-3 text-left text-cream-dim/80">
-          <li class="flex gap-3">
-            <span class="font-bold text-sand">1.</span>
-            <span>Click the button above and message us on WhatsApp.</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="font-bold text-sand">2.</span>
-            <span>Fill out a quick 2-minute questionnaire about your business goals.</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="font-bold text-sand">3.</span>
-            <span>We hop on a call to map out a step-by-step strategy to double your lead flow completely free.</span>
-          </li>
-        </ol>
       </div>
     </section>
   </main>

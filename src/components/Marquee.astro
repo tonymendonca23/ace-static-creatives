@@ -1,14 +1,24 @@
 ---
+import { home } from '../config/site';
+
 export interface Props {
   items?: string[];
 }
 
-const {
-  items = ['Fast Static Sites', 'Scroll-Stopping Ads', 'Persuasive Copy', '24/7 Support'],
-} = Astro.props;
+const { items = home.marquee } = Astro.props;
 ---
 
-<div class="relative overflow-hidden border-y border-cream-dim/10 bg-surface py-4">
+<div class="relative overflow-hidden border-y border-cream-dim/10 bg-surface py-5">
+  <div
+    class="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-surface to-transparent sm:w-28"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-surface to-transparent sm:w-28"
+    aria-hidden="true"
+  >
+  </div>
   <div class="animate-marquee flex w-max items-center gap-12 whitespace-nowrap">
     {
       [...items, ...items, ...items, ...items].map((text) => (

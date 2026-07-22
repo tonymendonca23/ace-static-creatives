@@ -1,0 +1,6 @@
+# https://acestaticcreatives.com/robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://acestaticcreatives.com/sitemap-index.xml
