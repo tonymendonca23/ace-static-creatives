@@ -188,7 +188,7 @@ export const home = {
   pain: {
     headingStart: 'The',
     headingUnderlined: 'ugly truth',
-    headingEnd: 'about local web developers in Guyana',
+    headingEnd: ' about local web developers in Guyana',
     paragraphs: [
       {
         before: 'Most tech guys and corporate agencies follow a lazy, profitable cycle: ',
@@ -244,7 +244,7 @@ export const home = {
 
   tripleEngine: {
     headingUnderlined: 'Everything',
-    headingEnd: 'you need to dominate the local market',
+    headingEnd: ' you need to dominate the local market',
     subheading:
       "We don't hand you a website and leave you to figure out marketing alone. We build your entire customer-acquisition engine.",
     items: [
