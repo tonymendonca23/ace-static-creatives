@@ -173,7 +173,7 @@ export const home = {
     },
     stats: [
       { value: '4-day', label: 'mockup turnaround' },
-      { value: '24/7', label: 'always-on storefront' },
+      { value: '24/7', label: 'Digital Salesman' },
       { value: '$0', label: 'upfront launch option' },
     ],
   },
@@ -186,7 +186,7 @@ export const home = {
   ],
 
   pain: {
-    headingStart: 'The',
+    headingStart: 'The ',
     headingUnderlined: 'ugly truth',
     headingEnd: ' about local web developers in Guyana',
     paragraphs: [
@@ -266,7 +266,7 @@ export const home = {
   process: {
     headingStart: 'Your',
     headingHighlight: 'digital salesman',
-    headingMiddle: 'live in',
+    headingMiddle: 'live in ',
     headingAccent: '3 simple steps',
     steps: [
       {
