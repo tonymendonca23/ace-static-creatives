@@ -11,13 +11,14 @@ const isActive = (href: string) =>
     <nav class="flex h-[4.25rem] items-center justify-between gap-4" aria-label="Primary">
       <a
         href="/"
-        class="group flex shrink-0 items-center gap-2.5 text-base font-black tracking-tight text-cream sm:text-lg"
+        class="group flex shrink-0 items-center gap-2.5"
       >
-        <span
-          class="flex h-9 w-9 items-center justify-center rounded-xl border border-sand/40 bg-gradient-to-br from-surface-2 to-surface text-sm font-black text-sand shadow-[inset_0_1px_0_rgb(255_255_255_/_0.06)] transition-transform duration-300 group-hover:scale-105 group-hover:border-sand/70"
-          >{brand.logoInitial}</span
-        >
-        <span>{brand.name}</span>
+        <img
+          src="/ace-static-creatives-logo.png"
+          alt="Ace Static Creatives Logo"
+          class="h-8 w-auto transition-transform duration-300 group-hover:scale-105"
+        />
+        <span class="text-base font-black tracking-tight text-cream sm:text-lg">Ace Static Creatives</span>
       </a>
 
       <!-- Desktop nav -->

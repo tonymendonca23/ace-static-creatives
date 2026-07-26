@@ -161,7 +161,7 @@ export const home = {
     headlineHighlight: '24/7 digital salesman',
     headlineEnd: '—within 4 days.',
     subheadline:
-      'Without bankrupting your cash flow on arrogant corporate agencies. Just a fast, bulletproof storefront and a team that answers on WhatsApp.',
+      'Skip the corporate bloat and 6-week timelines. Get a high-converting Digital Salesman built fast, with direct WhatsApp access to the team actually building it.',
     primaryCta: 'Claim Your FREE 24/7 Digital Salesman Mockup',
     secondaryCta: { label: 'See how it works', href: '/services' },
     reassurance: 'No tech skills needed. No hidden hosting fees. No surprise bills.',
