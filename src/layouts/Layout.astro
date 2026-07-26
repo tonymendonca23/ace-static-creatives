@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { colors, seo } from '../config/site';
+import { colors, seo, siteUrl, brand, contact } from '../config/site';
 
 interface Props {
   title?: string;
@@ -10,6 +10,48 @@ interface Props {
 }
 
 const { title = seo.default.title, description = seo.default.description } = Astro.props;
+
+// Build canonical URL from current path
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+
+// Open Graph image (using hero image as fallback)
+const ogImage = `${siteUrl}/hero-image-4.png`;
+
+// JSON-LD structured data for LocalBusiness
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: brand.name,
+  description: description,
+  url: siteUrl,
+  telephone: contact.whatsappNumber,
+  email: contact.email,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Georgetown',
+    addressCountry: 'GY',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: '6.8046',
+    longitude: '-58.1551',
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Guyana',
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    opens: '00:00',
+    closes: '23:59',
+  },
+  priceRange: '$$',
+  image: ogImage,
+  sameAs: [
+    // Add social media links here when available
+  ],
+};
 
 /* Inject brand colors from the central config as CSS variables so the whole
    design system (global.css @theme) is driven by src/config/site.ts. */
@@ -39,7 +81,30 @@ const brandVars = `
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		<meta name="robots" content="index, follow" />
 		<title>{title}</title>
+		
+		<!-- Canonical URL -->
+		<link rel="canonical" href={canonicalUrl} />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:locale" content="en_US" />
+		
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalUrl} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		
+		<!-- JSON-LD Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+		
 		<style set:html={brandVars}></style>
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">

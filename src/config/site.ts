@@ -80,29 +80,29 @@ export const footer = {
 
 export const seo = {
   default: {
-    title: 'Ace Static Creatives | High-Performance Digital Salesman',
+    title: 'Web Design Guyana | Static Websites & Digital Marketing | Ace Static Creatives',
     description:
-      'Ace Static Creatives - Your 24/7 Digital Salesman in Guyana. High-performance static web development and ad strategies for local businesses.',
+      'Professional web design and website development in Guyana. We build fast static websites, digital marketing campaigns, and WhatsApp-integrated sales systems for Georgetown businesses.',
   },
   services: {
-    title: 'Services | Ace Static Creatives',
+    title: 'Web Design Services Guyana | Static Websites & Digital Marketing | Ace Static Creatives',
     description:
-      'High-converting sales engines, scroll-stopping static ads, and persuasive ad copy for Guyanese businesses. Claim your free 30-minute revenue audit.',
+      'Web design services in Guyana: static website development, digital marketing, Facebook ads, and WhatsApp lead generation. Get a free website mockup for your Guyana business.',
   },
   portfolio: {
-    title: 'Portfolio | Ace Static Creatives',
+    title: 'Web Design Portfolio Guyana | Website Examples | Ace Static Creatives',
     description:
-      'See how Ace Static Creatives builds fast static DIGITAL SALESMAN, scroll-stopping ads, and persuasive copy for local Guyanese businesses.',
+      'See our web design portfolio in Guyana. Fast static websites, digital marketing campaigns, and sales systems built for Georgetown and Guyanese businesses.',
   },
   about: {
-    title: 'About | Ace Static Creatives',
+    title: 'About Ace Static Creatives | Web Design Guyana | Georgetown Web Developer',
     description:
-      'Ace Static Creatives is a Guyanese digital growth partner building fast static sales engines, scroll-stopping ads, and persuasive copy for local small businesses.',
+      'Georgetown-based web design agency specializing in static websites and digital marketing for Guyanese businesses. WhatsApp-integrated sales systems and fast-loading websites.',
   },
   contact: {
-    title: 'Contact | Ace Static Creatives',
+    title: 'Contact Ace Static Creatives | Web Design Guyana | Georgetown',
     description:
-      'Get in touch with Ace Static Creatives via WhatsApp. Fast, friendly support for static websites, ads, and copy in Guyana.',
+      'Contact our Georgetown web design team. WhatsApp support, free website mockups, and digital marketing consultations for Guyanese businesses.',
   },
 };
 
