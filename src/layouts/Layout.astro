@@ -106,10 +106,12 @@ const brandVars = `
 		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
 		
 		<style set:html={brandVars}></style>
-		<!-- Google Fonts -->
+		<!-- Google Fonts: preload critical font files to avoid render-blocking -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Sora:wght@500;600;700;800&display=swap">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Sora:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'">
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Sora:wght@500;600;700;800&display=swap"></noscript>
 	</head>
 	<body class="bg-base text-cream font-sans antialiased selection:bg-clay selection:text-cream">
 		<Header />
@@ -117,15 +119,18 @@ const brandVars = `
 		<Footer />
 		<script>
 			// Scroll-reveal: adds .is-revealed when [data-reveal] elements enter view.
+			// Use requestAnimationFrame to avoid forced reflow
 			if ('IntersectionObserver' in window) {
 				const observer = new IntersectionObserver(
 					(entries) => {
-						for (const entry of entries) {
-							if (entry.isIntersecting) {
-								entry.target.classList.add('is-revealed');
-								observer.unobserve(entry.target);
+						requestAnimationFrame(() => {
+							for (const entry of entries) {
+								if (entry.isIntersecting) {
+									entry.target.classList.add('is-revealed');
+									observer.unobserve(entry.target);
+								}
 							}
-						}
+						});
 					},
 					{ threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
 				);

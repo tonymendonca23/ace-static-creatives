@@ -14,7 +14,7 @@ import { brand, contact, footer, nav } from '../config/site';
           >
           {brand.name}
         </a>
-        <p class="mt-5 max-w-sm leading-relaxed text-cream-dim/70">
+        <p class="mt-5 max-w-sm leading-relaxed text-cream-dim/80">
           {footer.blurb}
         </p>
         <a
@@ -31,14 +31,14 @@ import { brand, contact, footer, nav } from '../config/site';
       </div>
 
       <div class="md:col-span-3 md:col-start-7">
-        <h4 class="mb-5 text-sm font-bold uppercase tracking-wider text-cream">{footer.exploreHeading}</h4>
+        <h2 class="mb-5 text-sm font-bold uppercase tracking-wider text-cream">{footer.exploreHeading}</h2>
         <ul class="space-y-3">
           {
             nav.links.map((link) => (
               <li>
                 <a
                   href={link.href}
-                  class="inline-flex items-center gap-2 text-cream-dim/70 transition hover:translate-x-0.5 hover:text-sand"
+                  class="inline-flex items-center gap-2 text-cream-dim/80 transition hover:translate-x-0.5 hover:text-sand"
                 >
                   {link.label}
                 </a>
@@ -49,14 +49,14 @@ import { brand, contact, footer, nav } from '../config/site';
       </div>
 
       <div class="md:col-span-3">
-        <h4 class="mb-5 text-sm font-bold uppercase tracking-wider text-cream">{footer.contactHeading}</h4>
+        <h2 class="mb-5 text-sm font-bold uppercase tracking-wider text-cream">{footer.contactHeading}</h2>
         <ul class="space-y-3">
           <li>
             <a
               href={contact.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-cream-dim/70 transition hover:text-sand"
+              class="text-cream-dim/80 transition hover:text-sand"
             >
               WhatsApp
             </a>
@@ -64,20 +64,20 @@ import { brand, contact, footer, nav } from '../config/site';
           <li>
             <a
               href={`mailto:${contact.email}`}
-              class="break-all text-cream-dim/70 transition hover:text-sand"
+              class="break-all text-cream-dim/80 transition hover:text-sand"
             >
               {contact.email}
             </a>
           </li>
           <li>
-            <span class="text-cream-dim/70">{contact.location}</span>
+            <span class="text-cream-dim/80">{contact.location}</span>
           </li>
         </ul>
       </div>
     </div>
 
     <div
-      class="mt-14 flex flex-col items-center justify-between gap-4 border-t border-cream-dim/10 pt-8 text-sm text-cream-dim/50 md:flex-row"
+      class="mt-14 flex flex-col items-center justify-between gap-4 border-t border-cream-dim/10 pt-8 text-sm text-cream-dim/70 md:flex-row"
     >
       <p>&copy; {new Date().getFullYear()} {footer.copyrightName}. {footer.rightsText}</p>
       <p>{brand.footerTagline}</p>

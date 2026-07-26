@@ -36,7 +36,7 @@ export const colors = {
   creamDim: '#e9e3d4', // secondary text
   sand: '#b6c29a', // accent / highlights
   olive: '#90905c',
-  forest: '#4d842b', // primary CTA green
+  forest: '#3d7a20', // primary CTA green (darker for better contrast)
   clay: '#b85c4a', // warning / "pain" accent
   clayDark: '#8a4538',
   warmBlue: '#4a6fa5',
