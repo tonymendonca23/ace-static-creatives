@@ -2,6 +2,8 @@ import { defineConfig } from 'astro/config';
 import tailwindcjs from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://docs.astro.build/en/guides/deploy/
 // https://docs.astro.build/en/guides/integrations-guide/sitemap/
 export default defineConfig({
@@ -45,4 +47,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcjs()],
   },
+
+  adapter: cloudflare(),
 });
