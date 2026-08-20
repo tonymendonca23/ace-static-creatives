@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import FreeMockupModal from '../components/FreeMockupModal.astro';
-import { seo, services, discountedPrice } from '../config/site';
+import { seo, services } from '../config/site';
 
 const { hero, pain, comparison, packages, guarantee, finalCta } = services;
 ---
@@ -157,11 +157,7 @@ const { hero, pain, comparison, packages, guarantee, finalCta } = services;
 
                 <div class="mt-5 space-y-1.5 border-b border-cream-dim/10 pb-6">
                   <p class="text-sm text-cream-dim/70">{pkg.priceSetup}</p>
-                  <p class="text-3xl font-black text-sand md:text-4xl">{discountedPrice(pkg.priceMonthly)}</p>
-                  <p class="text-sm text-cream-dim/60 line-through">{pkg.priceMonthly}</p>
-                  <p class="inline-block rounded-full bg-forest/20 px-3 py-1 text-xs font-bold text-sand">
-                    {packages.discountLabel}
-                  </p>
+                  <p class="text-3xl font-black text-sand md:text-4xl">{pkg.priceMonthly}</p>
                   <p class="text-xs text-cream-dim/60">{pkg.renewal}</p>
                 </div>
 

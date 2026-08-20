@@ -388,7 +388,7 @@ export const services = {
     heading: 'Our Offer Packages',
     subheading:
       'Presenting an offer so complete, risk-free, and valuable that saying no would be foolish.',
-    discountLabel: '35% off your first month',
+    discountLabel: '',
     items: [
       {
         name: 'Launch Engine',
