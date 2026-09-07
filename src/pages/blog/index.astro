@@ -1,0 +1,63 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FreeMockupModal from '../../components/FreeMockupModal.astro';
+import { seo } from '../../config/site';
+import { blogPosts } from '../../data/blog';
+---
+
+<Layout title={seo.blog.title} description={seo.blog.description}>
+  <main class="w-full overflow-hidden">
+    <section class="relative px-6 pb-16 pt-24 text-center lg:pt-32">
+      <div class="bg-glow-sand pointer-events-none absolute inset-0" aria-hidden="true"></div>
+      <div class="relative" data-reveal>
+        <span class="inline-block rounded-full border border-sand/30 bg-surface-2 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-sand">
+          Blog
+        </span>
+        <h1 class="mx-auto mt-6 max-w-4xl text-balance text-4xl font-black leading-tight tracking-tight text-cream md:text-6xl">
+          Local SEO & website guides for businesses <span class="text-sand">in Georgetown, Guyana</span>
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-cream-dim/80 md:text-xl">
+          Short, plain-English articles that solve real local problems. No jargon, no fluff — just what works for Guyanese small businesses.
+        </p>
+      </div>
+    </section>
+
+    <section class="px-6 pb-24">
+      <div class="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
+        {
+          blogPosts.map((post, i) => (
+            <a
+              href={`/blog/${post.slug}`}
+              class="card-elevated group flex flex-col rounded-3xl border border-cream-dim/10 bg-surface p-8 hover:border-sand/40"
+              data-reveal
+              style={`--reveal-delay: ${i * 100}ms`}
+            >
+              <p class="text-xs font-bold uppercase tracking-wider text-sand">
+                {new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+              </p>
+              <h2 class="mt-4 text-xl font-black leading-snug text-cream transition group-hover:text-sand md:text-2xl">
+                {post.title}
+              </h2>
+              <p class="mt-4 flex-1 leading-relaxed text-cream-dim/70">{post.description}</p>
+              <p class="mt-6 inline-flex items-center gap-2 text-sm font-bold text-sand">
+                Read the article
+                <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </p>
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="mx-auto mt-16 max-w-3xl text-center" data-reveal>
+        <p class="text-lg text-cream-dim/80">
+          Want guides like these written for your business every week? That's exactly what the Local Authority plan includes.
+        </p>
+        <div class="mt-8">
+          <FreeMockupModal triggerLabel="Claim Your FREE Website Mockup" />
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

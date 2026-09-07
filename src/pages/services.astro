@@ -2,8 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import FreeMockupModal from '../components/FreeMockupModal.astro';
 import { seo, services } from '../config/site';
+import { serviceCategories } from '../data/services';
 
-const { hero, pain, comparison, packages, guarantee, finalCta } = services;
+const { hero, pain, comparison, plans, updates, guarantee, finalCta } = services;
 ---
 
 <Layout title={seo.services.title} description={seo.services.description}>
@@ -32,6 +33,28 @@ const { hero, pain, comparison, packages, guarantee, finalCta } = services;
         <p class="mt-4 text-sm text-cream-dim/60">
           {hero.reassurance}
         </p>
+      </div>
+    </section>
+
+    <!-- SERVICE MONEY PAGES STRIP (internal linking with descriptive anchors) -->
+    <section class="px-6 pb-8">
+      <div class="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          serviceCategories.map((cat, i) => (
+            <a
+              href={`/services/${cat.id}`}
+              class="card-elevated group rounded-2xl border border-cream-dim/10 bg-surface p-5 hover:border-sand/40"
+              data-reveal
+              style={`--reveal-delay: ${i * 70}ms`}
+            >
+              <p class="text-sm font-black text-cream transition group-hover:text-sand">{cat.eyebrow}</p>
+              <p class="mt-1.5 text-xs leading-relaxed text-cream-dim/70">
+                {cat.keyword.replace(' in Georgetown, Guyana', '')} in Georgetown — pricing, process & FAQs.
+              </p>
+              <p class="mt-3 text-xs font-bold text-sand">View details →</p>
+            </a>
+          ))
+        }
       </div>
     </section>
 
@@ -75,7 +98,7 @@ const { hero, pain, comparison, packages, guarantee, finalCta } = services;
       </div>
     </section>
 
-    <!-- FEATURES VS BENEFITS -->
+    <!-- COMPARISON -->
     <section class="px-6 py-24 lg:py-32">
       <div class="mx-auto max-w-6xl">
         <div class="mb-16 text-center" data-reveal>
@@ -116,27 +139,27 @@ const { hero, pain, comparison, packages, guarantee, finalCta } = services;
       </div>
     </section>
 
-    <!-- PACKAGES -->
+    <!-- PLANS -->
     <section class="relative bg-surface px-6 py-24 lg:py-32">
       <div class="bg-glow-sand pointer-events-none absolute inset-0" aria-hidden="true"></div>
-      <div class="relative mx-auto max-w-7xl">
+      <div class="relative mx-auto max-w-5xl">
         <div class="mb-16 text-center" data-reveal>
           <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
-            {packages.heading}
+            {plans.heading}
           </h2>
           <p class="mx-auto mt-4 max-w-2xl text-lg text-cream-dim/80">
-            {packages.subheading}
+            {plans.subheading}
           </p>
         </div>
 
-        <div class="grid gap-8 lg:grid-cols-3 lg:items-stretch">
+        <div class="grid gap-8 md:grid-cols-2 md:items-stretch">
           {
-            packages.items.map((pkg, i) => (
+            plans.items.map((pkg, i) => (
               <div
                 class:list={[
                   'card-elevated relative flex flex-col rounded-3xl border p-8 pt-10',
                   pkg.featured
-                    ? 'border-forest/60 bg-gradient-to-b from-forest/15 to-base shadow-[0_0_60px_-20px_var(--color-forest)] lg:-my-4 lg:py-12'
+                    ? 'border-forest/60 bg-gradient-to-b from-forest/15 to-base shadow-[0_0_60px_-20px_var(--color-forest)]'
                     : 'border-cream-dim/10 bg-base',
                 ]}
                 data-reveal
@@ -158,7 +181,7 @@ const { hero, pain, comparison, packages, guarantee, finalCta } = services;
                 <div class="mt-5 space-y-1.5 border-b border-cream-dim/10 pb-6">
                   <p class="text-sm text-cream-dim/70">{pkg.priceSetup}</p>
                   <p class="text-3xl font-black text-sand md:text-4xl">{pkg.priceMonthly}</p>
-                  <p class="text-xs text-cream-dim/60">{pkg.renewal}</p>
+                  <p class="text-xs text-cream-dim/60">{pkg.term}</p>
                 </div>
 
                 <ul class="mt-6 flex-1 space-y-3.5">
@@ -179,14 +202,47 @@ const { hero, pain, comparison, packages, guarantee, finalCta } = services;
                   ))}
                 </ul>
 
-                <p class="mt-4 text-xs italic text-cream-dim/50">{pkg.note}</p>
-
                 <div class="mt-8">
                   <FreeMockupModal triggerLabel={pkg.cta} triggerClass="w-full" />
                 </div>
               </div>
             ))
           }
+        </div>
+      </div>
+    </section>
+
+    <!-- UPDATE POLICY -->
+    <section class="px-6 py-24 lg:py-28">
+      <div class="mx-auto max-w-5xl" data-reveal>
+        <h2 class="text-center text-2xl font-black leading-tight text-cream md:text-4xl">
+          {updates.heading}
+        </h2>
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+          <div class="rounded-3xl border border-forest/40 bg-surface p-8">
+            <p class="text-sm font-black uppercase tracking-wider text-sand">✓ Included in your plan</p>
+            <ul class="mt-5 space-y-3">
+              {updates.included.map((item) => (
+                <li class="flex items-start gap-3 text-sm leading-relaxed text-cream-dim">
+                  <span class="mt-0.5 text-sand">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p class="mt-5 text-xs italic text-cream-dim/60">{updates.includedNote}</p>
+          </div>
+          <div class="rounded-3xl border border-clay/30 bg-surface p-8">
+            <p class="text-sm font-black uppercase tracking-wider text-clay">✕ Billed as project add-ons</p>
+            <ul class="mt-5 space-y-3">
+              {updates.notIncluded.map((item) => (
+                <li class="flex items-start gap-3 text-sm leading-relaxed text-cream-dim">
+                  <span class="mt-0.5 text-clay">✕</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p class="mt-5 text-xs italic text-cream-dim/60">{updates.notIncludedNote}</p>
+          </div>
         </div>
       </div>
     </section>

@@ -34,6 +34,9 @@ export default defineConfig({
         if (item.url.includes('/portfolio')) {
           return { ...item, changefreq: 'monthly', priority: 0.8, lastmod };
         }
+        if (item.url.includes('/blog/')) {
+          return { ...item, changefreq: 'monthly', priority: 0.7, lastmod };
+        }
         if (item.url.includes('/about') || item.url.includes('/contact')) {
           return { ...item, changefreq: 'monthly', priority: 0.7, lastmod };
         }

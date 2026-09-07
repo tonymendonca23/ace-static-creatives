@@ -5,6 +5,9 @@
  * Every piece of user-facing content lives here: brand colors, copy, contact
  * info, CTA links, pricing, FAQs, projects, and image paths.
  *
+ * Copy follows the Copywriting SOP (NESB framework + Conditions Deck) and the
+ * Local Authority Framework (local keywords, money pages, plain English).
+ *
  * Edit this file to update the site — no component markup changes required.
  * ─────────────────────────────────────────────────────────────────────────────
  */
@@ -42,7 +45,7 @@ export const colors = {
   warmBlue: '#4a6fa5',
 };
 
-/* ═══════════════════════════ CONTACT & LINKS ═══════════════════════════ */
+/* ═══════════════════════ CONTACT & LINKS ═══════════════════════ */
 
 export const contact = {
   /** International format, no leading + */
@@ -58,51 +61,60 @@ export const nav = {
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
     { href: '/portfolio', label: 'Portfolio' },
+    { href: '/blog', label: 'Blog' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
   ],
   cta: {
-    label: 'Build My Digital Salesman',
+    label: 'Get My Free Mockup',
     href: 'https://wa.me/5926751884',
   },
 };
 
 export const footer = {
   blurb:
-    'High-performance static websites, scroll-stopping ads, and persuasive copy built exclusively for Guyanese small businesses.',
+    'Fast static websites, local SEO and Google Business Profiles built for Guyanese small businesses. We get you found on Google and route the leads straight to your WhatsApp.',
   exploreHeading: 'Explore',
   contactHeading: 'Contact',
   copyrightName: 'Ace Static Creatives',
   rightsText: 'All rights reserved.',
+  mapsLabel: 'Find us on Google Maps',
 };
 
 /* ═══════════════════════ SEO / PAGE METADATA ═══════════════════════ */
+/* Titles follow: [Service] in Georgetown, Guyana | Ace Static Creatives
+   Descriptions are 150–160 chars and mention Georgetown, Guyana. */
 
 export const seo = {
   default: {
-    title: 'Web Design Guyana | Static Websites & Digital Marketing | Ace Static Creatives',
+    title: 'Web Design in Georgetown, Guyana | Ace Static Creatives',
     description:
-      'Professional web design and website development in Guyana. We build fast static websites, digital marketing campaigns, and WhatsApp-integrated sales systems for Georgetown businesses.',
+      'Professional web design in Georgetown, Guyana. Fast static websites, local SEO and Google Business Profiles that bring small businesses more customers.',
   },
   services: {
-    title: 'Web Design Services Guyana | Static Websites & Digital Marketing | Ace Static Creatives',
+    title: 'Web Design & Local SEO Services in Georgetown, Guyana | Ace Static Creatives',
     description:
-      'Web design services in Guyana: static website development, digital marketing, Facebook ads, and WhatsApp lead generation. Get a free website mockup for your Guyana business.',
+      'Web design services in Georgetown, Guyana: static websites, local SEO, Google Business Profiles and weekly blogs. Two simple GYD plans with no hidden fees.',
   },
   portfolio: {
-    title: 'Web Design Portfolio Guyana | Website Examples | Ace Static Creatives',
+    title: 'Web Design Portfolio in Georgetown, Guyana | Ace Static Creatives',
     description:
-      'See our web design portfolio in Guyana. Fast static websites, digital marketing campaigns, and sales systems built for Georgetown and Guyanese businesses.',
+      'Our web design portfolio in Georgetown, Guyana: fast static websites and local SEO systems built for Guyanese small businesses. See the live examples today.',
   },
   about: {
-    title: 'About Ace Static Creatives | Web Design Guyana | Georgetown Web Developer',
+    title: 'About Our Web Design Team in Georgetown, Guyana | Ace Static Creatives',
     description:
-      'Georgetown-based web design agency specializing in static websites and digital marketing for Guyanese businesses. WhatsApp-integrated sales systems and fast-loading websites.',
+      'We are the web design team in Georgetown, Guyana behind static websites, local SEO and Google Business Profiles that grow small businesses across Guyana.',
   },
   contact: {
-    title: 'Contact Ace Static Creatives | Web Design Guyana | Georgetown',
+    title: 'Contact Our Web Design Team in Georgetown, Guyana | Ace Static Creatives',
     description:
-      'Contact our Georgetown web design team. WhatsApp support, free website mockups, and digital marketing consultations for Guyanese businesses.',
+      'Contact our web design team in Georgetown, Guyana on WhatsApp today. Get a free custom website mockup, local SEO advice and honest, jargon-free answers.',
+  },
+  blog: {
+    title: 'Local SEO & Website Guides in Georgetown, Guyana | Ace Static Creatives',
+    description:
+      'Plain-English guides for Guyanese small business owners: local SEO, Google Maps ranking and website tips from a web design team in Georgetown, Guyana.',
   },
 };
 
@@ -129,9 +141,9 @@ export const mockupForm = {
     goal: {
       question: 'What is your main focus for the next 30 days?',
       options: [
+        'Get found on Google Maps',
         'Get pre-qualified leads via WhatsApp',
-        'Automate sales & brand',
-        'Scale paid ads',
+        'Launch a fast new website',
       ],
     },
     capture: {
@@ -155,15 +167,15 @@ export const mockupForm = {
 
 export const home = {
   hero: {
-    badge: "Guyana's Static Site Agency",
+    badge: 'Based in Georgetown, Guyana',
     /** Headline split so the highlighted phrase can be styled independently */
-    headlineStart: 'Give your small business an enterprise-grade,',
-    headlineHighlight: '24/7 digital salesman',
-    headlineEnd: '—within 4 days.',
+    headlineStart: 'Static Websites That Bring You Customers',
+    headlineHighlight: 'in Georgetown, Guyana',
+    headlineEnd: '— While You Sleep.',
     subheadline:
-      'Skip the corporate bloat and 6-week timelines. Get a high-converting Digital Salesman built fast, with direct WhatsApp access to the team actually building it.',
-    primaryCta: 'Claim Your FREE 24/7 Digital Salesman Mockup',
-    secondaryCta: { label: 'See how it works', href: '/services' },
+      "We build fast, bulletproof websites, fix your Google Business Profile, and rank you for local searches. You don't touch a thing. You just answer the WhatsApp leads.",
+    primaryCta: 'Claim Your FREE Website Mockup',
+    secondaryCta: { label: 'See our services', href: '/services' },
     reassurance: 'No tech skills needed. No hidden hosting fees. No surprise bills.',
     image: {
       src: '/hero-image-4.png',
@@ -172,93 +184,133 @@ export const home = {
       height: 1024,
     },
     stats: [
-      { value: '4-day', label: 'mockup turnaround' },
-      { value: '24/7', label: 'Digital Salesman' },
-      { value: '$0', label: 'upfront launch option' },
+      { value: '3', label: 'build slots left this month' },
+      { value: '90-day', label: 'Google visibility guarantee' },
+      { value: '$0', label: 'upfront on the Digital Salesman' },
     ],
   },
 
   marquee: [
-    'Static DIGITAL SALESMAN',
-    'Scroll-Stopping Ads',
-    'Persuasive Copy',
-    'WhatsApp Support',
+    'Static Websites',
+    'Local SEO',
+    'Google Business Profile',
+    'WhatsApp Leads',
   ],
 
   pain: {
     headingStart: 'The ',
     headingUnderlined: 'ugly truth',
-    headingEnd: ' about local web developers in Guyana',
+    headingEnd: ' about your online presence right now',
     paragraphs: [
       {
-        before: 'Most tech guys and corporate agencies follow a lazy, profitable cycle: ',
-        emphasis: 'they build once, collect your cash, and abandon you completely.',
+        before: 'Your business runs on referrals and repeat customers. ',
+        emphasis: 'Strangers who search for you on Google find nothing — or worse, they find your competitor.',
         after: '',
-      },
-      {
+      }, {
         before:
-          'You message them on WhatsApp to change a price or fix a broken link. You get single ticks, ignored messages, or a surprise hourly bill just to reply.',
+          'You message a web developer to fix a price or a broken link. Single ticks. Ignored messages. Or a surprise hourly bill just to get a reply.',
         emphasis: '',
         after: '',
-      },
-      {
+      }, {
         before:
-          'Meanwhile your business looks neglected, your links spin on weak mobile networks, and you waste hours repeating ',
-        emphasis: '"check PM for price"',
-        after: ' in chaotic Facebook comments.',
+          'Meanwhile your customers type "check PM for price" into chaotic Facebook comments, your Google Maps listing sits empty with zero reviews, and ',
+        emphasis: 'every day you stay invisible is a job you handed to your competitor.',
+        after: '',
       },
     ],
     points: [
-      'They take forever to reply',
-      'Surprise hourly bills',
-      'Broken plugins after updates',
-      'Sites that spin on mobile data',
+      'Developers who ghost you after payment',
+      'Surprise hourly bills for tiny fixes',
+      'Zero reviews on your Google Maps listing',
+      'A site that spins on GTT & DigiCell data',
     ],
   },
 
   transformation: {
     heading: 'We killed the "build & abandon" model.',
     paragraphs: [
-      "At Ace Static Creatives, we don't believe in charging you hundreds of thousands upfront just to ghost you next month.",
-      "We build lightning-fast static DIGITAL SALESMAN that physically cannot break, don't use slow plugins, and load instantly on any smartphone data network in Georgetown.",
+      "At Ace Static Creatives, we don't charge you hundreds of thousands upfront just to ghost you next month. We stay on your team every single month.",
+      "We build lightning-fast static websites that physically cannot break, set up your Google Business Profile properly, and write weekly content that tells Google you are THE local expert. All managed by us. All on Guyana's mobile networks.",
     ],
-    closer: 'Best of all? We stay by your side as your permanent digital growth partners.',
+    closer: 'Best of all? If you\'re not on Google for your core services within 90 days, we work for free until you are.',
     cards: [
       {
         icon: 'shield',
         title: 'Zero moving parts',
-        body: 'No databases, no plugins, no update buttons. Just files that load.',
+        body: 'No databases, no plugins, no update buttons. Just files that load instantly on any phone in Guyana.',
       },
       {
         icon: 'bolt',
         title: 'Built for Georgetown data speeds',
-        body: 'Compressed assets, minimal requests, and instant first paint on mobile.',
+        body: 'Compressed assets, minimal requests, instant first paint on GTT and DigiCell mobile data.',
       },
       {
         icon: 'chat',
         title: 'Updates over WhatsApp',
-        body: 'Text us a price change, a new image, or a promo. We handle it fast.',
+        body: 'Text us a price change, a new photo, or your new business hours. We handle it fast — up to 15 times a month.',
       },
     ],
   },
 
-  tripleEngine: {
-    headingUnderlined: 'Everything',
-    headingEnd: ' you need to dominate the local market',
+  servicesGrid: {
+    heading: 'Everything you need to get found in Georgetown',
     subheading:
-      "We don't hand you a website and leave you to figure out marketing alone. We build your entire customer-acquisition engine.",
+      "We don't sell you a website and walk away. We build the whole system that turns local searches into WhatsApp leads.",
     items: [
       {
-        title: 'High-performance static Digital Salesman',
-        body: 'Modern sites that convert casual visitors into paying leads.',
+        href: '/services/web-design',
+        title: 'Static Web Design',
+        blurb: 'A custom 5-page website that loads instantly and never breaks. Built to convert visitors into WhatsApp leads.',
+        anchor: 'our static web design service in Georgetown',
       },
       {
-        title: 'High-stopping-power static ads',
-        body: 'Bold, engineered creatives that own the scroll on Facebook and Instagram feeds.',
+        href: '/services/local-seo',
+        title: 'Local SEO',
+        blurb: 'Rank for searches like "your service Georgetown". Weekly blog posts and smart internal linking that climb Google.',
+        anchor: 'our local SEO service in Georgetown',
       },
       {
-        title: 'Digital persuasion ads',
-        body: 'Psychological copy that taps local desires, dismantles doubts, and drives WhatsApp inquiries.',
+        href: '/services/google-business-profile',
+        title: 'Google Business Profile',
+        blurb: 'Real photos, real reviews, correct categories. The Map Pack is where locals buy — we get you in it.',
+        anchor: 'our Google Business Profile setup in Georgetown',
+      },
+      {
+        href: '/services/website-maintenance',
+        title: 'Website Maintenance',
+        blurb: 'Hosting, security and updates handled for you. One WhatsApp message and it\'s done — no hourly bills.',
+        anchor: 'our website maintenance service in Georgetown',
+      },
+    ],
+  },
+
+  method: {
+    heading: 'How we get your business found on Google',
+    subheading: 'Six steps. Plain English. No marketing jargon.',
+    steps: [
+      {
+        title: '1. Your Google Map Profile comes first.',
+        body: 'When people need help fast, they search Google Maps first. We clean your profile, replace stock photos with real pictures of your work, and help you collect your first 10 real reviews so new clients trust you instantly.',
+      },
+      {
+        title: '2. We build pages that actually bring in customers.',
+        body: 'Not generic "Services" pages people scroll past. We build pages that match exactly what people type when they\'re ready to hire — like "Emergency Roof Repair in Georgetown — Same Day Service, No Hidden Fees."',
+      },
+      {
+        title: '3. We write helpful, local articles that build trust.',
+        body: 'Short, useful guides about real local problems — like how to prepare your business for the Georgetown rainy season. Locals share them, and Google learns you\'re the go-to expert in your city.',
+      },
+      {
+        title: '4. We connect your pages so nobody gets lost.',
+        body: 'A website with no links between pages is a house with no doors. We link your articles to your service pages and your homepage, so visitors find what they need in one click — and Google ranks you faster.',
+      },
+      {
+        title: '5. We get respected local sites to vouch for you.',
+        body: 'No cheap spam links — Google penalizes those. We build real relationships with local businesses, community blogs and verified directories so Google sees Georgetown vouching for you.',
+      },
+      {
+        title: '6. We focus 100% on your city.',
+        body: 'We ignore national vanity keywords that bring traffic that can\'t buy. We target "your service Georgetown" — the exact searches typed by people ready to book today.',
       },
     ],
   },
@@ -266,25 +318,31 @@ export const home = {
   process: {
     headingStart: 'Your',
     headingHighlight: 'digital salesman',
-    headingMiddle: 'live in ',
+    headingMiddle: 'lives in ',
     headingAccent: '3 simple steps',
     steps: [
       {
         tag: 'Step 1',
         title: 'The WhatsApp briefing',
-        body: 'We look at your social pages, layout your goals, and outline your offer.',
+        body: 'We look at your social pages, your Google listing and your goals. 20 minutes on WhatsApp. That\'s it.',
       },
       {
         tag: 'Step 2',
         title: 'Review your free mockup',
-        body: 'Within 4 days, you get an elite digital salesman layout built for your brand.',
+        body: 'Within 4 days you get an elite website layout built for your brand — before you pay a single dollar.',
       },
       {
         tag: 'Step 3',
-        title: 'Launch & scale',
-        body: 'We deploy, design your ads, and manage the tech monthly while you run your business.',
+        title: 'Launch & get found',
+        body: 'We deploy your site, optimize your Google Business Profile, and start climbing local search while you run your business.',
       },
     ],
+  },
+
+  guarantee: {
+    heading: 'The 90-Day Google Visibility Guarantee',
+    body: 'If your website and Google Business Profile don\'t show up on Google for your core local services within 90 days of going live, we work for free until they do. No excuses. No fine print.',
+    seal: '🛡️',
   },
 
   faq: {
@@ -293,186 +351,187 @@ export const home = {
       {
         question: 'Do I need to know how to code or manage web hosting?',
         answer:
-          'Absolutely not. We handle all setup, hosting, and maintenance. You focus on running your business; we act as your dedicated digital mechanics.',
+          'Absolutely not. We handle hosting, security and every update. You focus on running your business; we act as your dedicated digital mechanics.',
       },
       {
         question: 'How are static sites faster than normal websites?',
         answer:
-          'Traditional sites rebuild themselves on every click. Static sites are pre-built, so the server hands the customer a ready-made page instantly. Zero processing time.',
+          'Traditional sites rebuild themselves on every click. Static sites are pre-built, so the server hands the customer a ready-made page instantly. Zero processing time. Perfect for Guyana\'s mobile networks.',
+      },
+      {
+        question: 'What counts as a website update?',
+        answer:
+          'Swapping a photo, changing a price, adding a testimonial, updating business hours or editing text — anything under 15 minutes. New pages or full redesigns are billed separately as project add-ons.',
       },
       {
         question: 'What if I want to change a price or layout later?',
         answer:
-          'Just send us a WhatsApp message. As your permanent partners, we handle all updates, price changes, and layout tweaks.',
+          'Just send us a WhatsApp message. As your permanent partners, we handle all updates, price changes and layout tweaks quickly — it\'s included in your plan.',
       },
     ],
   },
 
   finalCta: {
     heading: 'Put an expert team in your contacts today',
-    body: 'No tech jargon. No hidden hosting fees. No surprise bills. Just an affordable, small-business-friendly monthly partnership that keeps your online presence sharp.',
-    note: "Need an update, image change, or new promo? Text it to us on WhatsApp and it's done.",
-    cta: 'Claim Your FREE 24/7 Digital Salesman Mockup',
+    body: 'No tech jargon. No hidden hosting fees. No surprise bills. Just an affordable monthly partnership that keeps your business visible on Google and sharp online.',
+    note: 'We only take on 3 new builds per month so every client gets real attention. Need an update or a new promo? Text it to us on WhatsApp and it\'s done.',
+    cta: 'Claim Your FREE Website Mockup',
   },
 };
 
 /* ═════════════════════════════ SERVICES PAGE ═════════════════════════════ */
 
-/** First-month discount applied to every package (0.35 = 35% off) */
-export const PACKAGE_DISCOUNT = 0.35;
-
 export const services = {
   hero: {
     eyebrow:
-      'Attention Guyanese business owners & service providers: stop wasting money on websites that do nothing but sit there looking pretty!',
+      'Attention Guyanese business owners: stop paying for websites that sit there looking pretty while your competitors take your customers!',
     headline:
-      "We Build High-Converting Sales Engines That Turn Cold Visitors Into Loyal, High-Paying Clients On Autopilot Or You Don't Pay.",
+      "We Build Fast Static Websites That Get You Found On Google And Route Leads Straight To Your WhatsApp — Or You Don't Pay.",
     subheadline:
-      'Most web agencies build you a "pretty digital brochure" and leave you to figure out the rest. We build complete, Digital Persuasion conversion systems engineered to dominate your local market, ring your cash register, and scale your revenue fast.',
-    cta: 'Claim Your FREE 24/7 Digital Salesman Mockup',
-    reassurance: 'No pushy sales pitch. No obligation. Just a clear roadmap to scale.',
+      'Most web designers hand you a "pretty digital brochure" and disappear. We build a complete local visibility system: website, Google Business Profile, local SEO and weekly content — managed every month.',
+    cta: 'Claim Your FREE Website Mockup',
+    reassurance: 'No pushy sales pitch. No obligation. Just a clear roadmap to get found.',
   },
 
   pain: {
     heading: 'Are You Tired Of Playing "Digital Guesswork" With Your Business?',
     subheading:
-      "Let's be honest for a second. You didn't get into business to work 80-hour weeks putting out digital fires, chasing down unqualified leads, or wondering where your next customer is coming from. Does any of this sound painfully familiar?",
+      "Let's be honest. You didn't get into business to chase down unqualified leads or wonder where your next customer is coming from. Does any of this sound painfully familiar?",
     cards: [
       {
         title: 'The "Pretty Website" Trap',
         body: 'You paid a web designer who delivered a nice-looking site, but it brings in zero leads and zero calls.',
       },
       {
-        title: 'The Feast-or-Famine Rollercoaster',
-        body: 'You rely almost entirely on word-of-mouth or random referrals, leaving your monthly revenue completely unpredictable.',
+        title: 'Invisible On Google Maps',
+        body: 'When locals search for your service, your competitor shows up with 40 reviews and you show up with none — or not at all.',
       },
       {
-        title: 'Wasted Ad Budget',
-        body: "You've thrown money at Facebook or Google ads, only to get clicks from tire-kickers who vanish when you tell them your prices.",
+        title: 'The Ghosted-By-Developer Cycle',
+        body: 'You paid upfront, they built once, and now every tiny fix costs you an hourly bill or a week of begging on WhatsApp.',
       },
       {
         title: 'Working IN Your Business, Not ON It',
-        body: "You're trapped doing low-level administrative chores instead of focusing on high-leverage, revenue-producing activities.",
+        body: "You're trapped doing low-level admin chores instead of focusing on high-leverage, revenue-producing activities.",
       },
     ],
     truthLabel: 'Here is the brutal truth:',
     truthBody:
-      "You don't have a traffic problem. You have a conversion problem. If you can't turn traffic into profit predictably, you don't have a scalable business, you have an expensive job.",
+      "You don't have a traffic problem. You have a visibility problem. If locals can't find you on Google when they're ready to buy, you don't have a scalable business — you have an expensive job.",
   },
 
   comparison: {
-    heading: 'Why Our High-Converting Systems Out-Perform Standard Websites Every Single Time',
+    heading: 'Why Our Systems Out-Perform Standard Websites Every Single Time',
     standardHeading: 'What Standard Web Designers Give You 👎',
     aceHeading: 'What Ace Static Creatives Delivers 👍',
     rows: [
       {
         standard: 'Pretty graphics with zero psychology',
-        ace: "Digital Persuasion that speaks directly to your dream buyer's fears and desires.",
+        ace: 'Copy that speaks directly to your dream buyer\'s fears and desires.',
       },
       {
         standard: 'Generic "Contact Us" forms that get ignored',
-        ace: 'High-Value Lead Captures & Automated Funnels that capture leads 24/7/365.',
+        ace: 'Direct WhatsApp lead routing that captures leads 24/7/365.',
       },
       {
         standard: 'Slow, cluttered pages that lose visitors',
-        ace: 'Lightning-Fast, Mobile-First Architecture built to rank and convert instantly.',
+        ace: 'Lightning-fast, mobile-first static architecture built to rank and convert.',
       },
       {
-        standard: 'Vague claims like "Friendly & Experienced"',
-        ace: 'Godfather Offers that make it impossible for prospects to say no.',
+        standard: 'A one-time build, then silence',
+        ace: 'Monthly management: hosting, security, updates and weekly local content.',
       },
     ],
   },
 
-  packages: {
+  plans: {
     heading: 'Our Offer Packages',
     subheading:
-      'Presenting an offer so complete, risk-free, and valuable that saying no would be foolish.',
-    discountLabel: '',
+      'Two simple plans. Priced in GYD. No hidden fees, no surprise bills — ever.',
     items: [
       {
-        name: 'Launch Engine',
+        name: 'The Digital Salesman',
         tag: 'Start risk-free',
-        priceSetup: '$0 GYD upfront',
-        priceMonthly: '$35,000 GYD/mo',
-        renewal: 'Renews at $35,000 GYD/mo',
-        note: 'Client runs their own ads',
+        priceSetup: '$0 GYD setup',
+        priceMonthly: '$20,000 GYD/mo',
+        term: '12-month agreement',
         features: [
-          '5-Page Premium Web System (Home, Services, About, Contact, Gallery)',
-          '1 Custom Interactive Tool (e.g., Price Calculator / Service Toggle)',
-          '2 Premium Static Ad Creatives + 2 High-Converting Written Ad Copies',
-          'Direct WhatsApp Lead Routing',
-          'Complete Digital Management (Premium Hosting & Security + 2 Free Monthly Content Updates)',
-          'Monthly Performance Report via WhatsApp',
+          'Custom 5-page static website (Home, Services, About, Contact, Gallery)',
+          'Fully managed hosting & security',
+          'Google Business Profile setup & optimization',
+          'Local SEO foundation (rank for your city)',
+          'WhatsApp lead routing',
+          'Up to 8 website updates per month',
         ],
         cta: 'Get Started For $0 Upfront',
         featured: false,
       },
       {
-        name: 'Local Authority',
+        name: 'The Local Authority',
         tag: 'Most popular',
         priceSetup: '$20,000 GYD setup',
         priceMonthly: '$50,000 GYD/mo',
-        renewal: 'Renews at $50,000 GYD/mo',
-        note: 'Client provides their own Meta ad budget',
+        term: 'Monthly retainer',
         features: [
-          'Everything in Launch Engine (5-Page Premium Web System)',
-          'Active Facebook Ad Management (Campaign monitoring & tuning)',
-          '3 High-Converting Written Ad Copies + 3 Premium Static Ad Creatives',
-          'Local SEO Sweep (Google Maps & local search ranking)',
-          '2x Per Month Campaign Performance Tuning',
-          'Complete Digital Landlord Management (Hosting & Security)',
+          'Custom 5-page static website (Home, Services, About, Contact, Gallery)',
+          'Fully managed hosting & security',
+          'Google Business Profile setup + active monthly management',
+          'Continuous local SEO (climb Google search & maps)',
+          '1 new blog post every week (delivered every Monday)',
+          'WhatsApp lead routing',
+          'Up to 15 website updates per month',
         ],
-        cta: 'Claim Your Digital Salesman',
+        cta: 'Claim Your Local Authority',
         featured: true,
-      },
-      {
-        name: 'Hyper-Growth Engine',
-        tag: 'Maximum dominance',
-        priceSetup: '$40,000 GYD setup',
-        priceMonthly: '$85,000 GYD/mo',
-        renewal: 'Renews at $85,000 GYD/mo',
-        note: 'Client provides their own Meta ad budget',
-        features: [
-          'Everything in Local Authority (5-Page Premium Web System)',
-          'Advanced Facebook Ad Management (Daily tracking, scaling, Meta Ads Manager & Advanced Pixel Tracking)',
-          '5 High-Converting Written Ad Copies + 5 Static Ad Creatives (Fresh visuals deployed monthly for maximum split-testing)',
-          'Custom Lead Capture Dashboard & Integrated Lead Routing Automation',
-          'Weekly Campaign Performance Tuning & Strategy Updates',
-          'Priority Digital Landlord Management (Hosting, Security & instant updates)',
-        ],
-        cta: 'Dominate Your Market Now',
-        featured: false,
       },
     ],
   },
 
+  updates: {
+    heading: 'What counts as an "update"? (So nobody gets surprised)',
+    included: [
+      'Swapping a photo',
+      'Changing a price',
+      'Adding a new testimonial',
+      'Updating business hours',
+      'Editing text',
+      'Adding a new gallery image',
+    ],
+    includedNote: 'Any task that takes less than 15 minutes to execute.',
+    notIncluded: [
+      'Designing brand-new pages',
+      'Changing the entire layout or color scheme',
+      'Adding complex features',
+    ],
+    notIncludedNote: 'These are billed separately as project add-ons — quoted upfront, always.',
+  },
+
   guarantee: {
-    heading: 'Our Ironclad "Zero-Risk" Guarantee',
-    body: "We are so confident in our direct-response conversion engines that we back every build with a simple guarantee: If your new sales system doesn't generate measurable, qualified leads within 60 days of launch, we will work with you for FREE until it does, or refund your build fee in full. No excuses, no fine print.",
+    heading: 'Our Ironclad 90-Day Guarantee',
+    body: 'If your website and Google Business Profile do not show up on Google for your core local services within 90 days of going live, we work for free until they do. No excuses. No fine print.',
   },
 
   finalCta: {
     heading: 'Ready To Take Control Of Your Business Revenue?',
-    body: "We only work with a select number of business clients each month to ensure every build receives maximum attention and explosive results. Don't let your competitors steal another high-value client out from under you.",
+    body: 'We only take on 3 new clients each month so every build gets maximum attention. Don\'t let your competitors steal another customer while you wait.',
     cta: 'Get My Free Custom Mockup',
     steps: [
       'Click the button above and message us on WhatsApp.',
       'Fill out a quick 2-minute questionnaire about your business goals.',
-      'We hop on a call to map out a step-by-step strategy to double your lead flow completely free.',
+      'We map out a step-by-step strategy to get you found on Google — completely free.',
     ],
   },
 };
 
-/* ════════════════════════════ PORTFOLIO PAGE ════════════════════════════ */
+/* ══════════════════════════════ PORTFOLIO PAGE ══════════════════════════════ */
 
 export const portfolio = {
   hero: {
     badge: 'Portfolio',
-    headlineStart: 'Work that',
+    headlineStart: 'Web design work in Georgetown, Guyana that',
     headlineHighlight: 'speaks for itself',
     subheadline:
-      'Fast DIGITAL SALESMAN, bold ads, and persuasive copy built for real Guyanese small businesses.',
+      'Fast static websites and local SEO systems built for real Guyanese small businesses.',
   },
   projects: [
     {
@@ -494,7 +553,7 @@ export const portfolio = {
         'https://api.microlink.io/?url=https%3A%2F%2Fmendoncagg.com%2F&screenshot=true&meta=false&embed=screenshot.url',
     },
     {
-      title: 'Three A\'s Cleaning & Maintenance',
+      title: "Three A's Cleaning & Maintenance",
       category: 'Service Business Website',
       description:
         'A professional cleaning and maintenance service website for a Guyana-based company offering residential and commercial cleaning solutions.',
@@ -507,7 +566,7 @@ export const portfolio = {
   finalCta: {
     heading: 'Ready to be our next win?',
     body: "Tell us about your business and we'll build a free mobile-optimized mockup this week.",
-    cta: 'Claim Your FREE 24/7 Digital Salesman Mockup',
+    cta: 'Claim Your FREE Website Mockup',
   },
 };
 
@@ -517,10 +576,10 @@ export const about = {
   hero: {
     eyebrow: 'The Story Behind Ace Static Creatives',
     headline:
-      'We Didn\'t Start An Agency To Build "Pretty Websites." We Built It To End The Digital Guesswork For Guyanese Business Owners.',
+      'We Didn\'t Start An Agency To Build "Pretty Websites." We Built It To End The Digital Guesswork For Business Owners in Georgetown, Guyana.',
     subheadlineStart:
-      'For too long, local businesses have been forced to choose between over-priced, arrogant corporate agencies or cheap freelancers who build digital brochures that bring in zero leads. We built a third option:',
-    subheadlineEmphasis: 'fast, enterprise-grade sales engines engineered to scale your revenue.',
+      'For too long, local businesses have been forced to choose between over-priced corporate agencies or cheap freelancers who build digital brochures that bring in zero leads. We built a third option:',
+    subheadlineEmphasis: 'fast, enterprise-grade sales engines engineered to get you found and scale your revenue.',
   },
 
   whyFail: {
@@ -528,23 +587,23 @@ export const about = {
     paragraphs: [
       {
         before:
-          'Let\'s be completely transparent. Most web designers in the market care about one thing: making a page look "aesthetic" so they can put it in their portfolio and collect your check. But aesthetics don\'t pay your bills.',
-        emphasis: 'Conversions do.',
+          'Let\'s be completely transparent. Most web designers care about one thing: making a page look "aesthetic" so they can put it in their portfolio and collect your check. But aesthetics don\'t pay your bills.',
+        emphasis: 'Visibility and conversions do.',
       },
       {
         before:
-          'When you hire a traditional web designer, they hand you a site and expect you to figure out the copywriting, the lead routing, the marketing psychology, and the ad campaign.',
+          'When you hire a traditional web designer, they hand you a site and expect you to figure out the copywriting, the Google Business Profile, the local SEO, and the content that makes Google trust you.',
         emphasis: '',
       },
     ],
     traditionalLabel: 'Traditional Web Designer',
     traditionalBody: 'Pretty Layout + "Contact Us" Form + Zero Leads ❌',
     aceLabel: 'Ace Static Creatives',
-    aceBody: 'Digital persuasion + Bulletproof Tech + WhatsApp Sales Engine 🚀',
+    aceBody: 'Fast Static Tech + Google Business Profile + Local SEO + WhatsApp Sales Engine 🚀',
     realizationStart:
       "We realized Guyanese service providers and business owners didn't need more \"digital art.\" They needed an",
     realizationEmphasis: 'automated, 24/7 Digital Salesman',
-    realizationEnd: 'that works around the clock to turn cold traffic into pre-qualified leads.',
+    realizationEnd: 'that works around the clock to turn local searches into pre-qualified leads.',
   },
 
   pillars: {
@@ -558,8 +617,8 @@ export const about = {
       },
       {
         number: '2',
-        title: 'Digital Persuasion',
-        body: 'Every headline, button, and image on your page is placed with deliberate psychological intent—designed to capture attention and trigger action.',
+        title: 'Local Visibility First',
+        body: 'Your Google Business Profile and local SEO come before anything else. If locals can\'t find you on Maps, nothing else matters.',
       },
       {
         number: '3',
@@ -568,8 +627,8 @@ export const about = {
       },
       {
         number: '4',
-        title: 'Shared Risk (The Godfather Commitment)',
-        body: 'We do not believe in charging massive setup fees before proving our value. Offers like our $0 Upfront Launch Engine exist because we back our work completely.',
+        title: 'Shared Risk (The 90-Day Commitment)',
+        body: 'We do not believe in charging massive setup fees before proving our value. If you\'re not on Google for your core services in 90 days, we work free until you are.',
       },
     ],
   },
@@ -583,7 +642,7 @@ export const about = {
       },
       {
         before:
-          'Whether you are a local courier service, a growing contractor, a spa owner, or a specialized professional service, you deserve enterprise-grade digital systems without corporate bloat or hidden fees. We act as your fractional digital growth team—handling the tech, the copy, and the management so you can focus entirely on running your operations and fulfilling sales.',
+          'Whether you are a local courier service, a growing contractor, a spa owner, or a specialized professional service, you deserve enterprise-grade digital systems without corporate bloat or hidden fees. We act as your fractional digital growth team—handling the tech, the SEO, and the content so you can focus entirely on running your operations and fulfilling sales.',
         emphasis: '',
       },
     ],
@@ -592,7 +651,7 @@ export const about = {
   finalCta: {
     heading: 'Ready To Put A 24/7 Digital Salesman To Work For Your Business?',
     body: "You don't need to take our word for it. Let us prove it to you before you spend a single cent on setup fees.",
-    cta: 'Tap Here To Claim Your FREE Custom Digital Salesman Mockup',
+    cta: 'Tap Here To Claim Your FREE Custom Mockup',
     nextHeading: 'What happens next?',
     nextSteps: [
       'Fill out our 20-second questionnaire.',
@@ -607,7 +666,7 @@ export const about = {
 export const contactPage = {
   hero: {
     badge: 'Contact',
-    headlineStart: 'Put an expert team in',
+    headlineStart: 'Put a Georgetown, Guyana web design team in',
     headlineHighlight: 'your contacts',
     subheadline:
       "No tickets, no waiting rooms, no tech jargon. Just WhatsApp us and we'll handle the rest.",
@@ -615,7 +674,7 @@ export const contactPage = {
   whatsappCard: {
     heading: 'WhatsApp us',
     body: 'The fastest way to get help, request updates, or claim your free mockup.',
-    cta: 'Claim Your FREE 24/7 Digital Salesman Mockup',
+    cta: 'Claim Your FREE Website Mockup',
   },
   otherWays: {
     heading: 'Other ways to reach us',
@@ -626,15 +685,6 @@ export const contactPage = {
   finalCta: {
     heading: 'Let us prove it first',
     body: "We'll build a custom, mobile-optimized homepage mockup for your business this week before you pay us a single dollar.",
-    cta: 'Claim Your FREE 24/7 Digital Salesman Mockup',
+    cta: 'Claim Your FREE Website Mockup',
   },
 };
-
-/* ═══════════════════════════════ HELPERS ═══════════════════════════════ */
-
-/** Compute the discounted first-month price from a "$50,000 GYD/mo" string. */
-export function discountedPrice(monthly: string): string {
-  const numeric = Number(monthly.replace(/[^0-9]/g, ''));
-  const discounted = Math.round(numeric * (1 - PACKAGE_DISCOUNT));
-  return `$${discounted.toLocaleString()} GYD/mo`;
-}

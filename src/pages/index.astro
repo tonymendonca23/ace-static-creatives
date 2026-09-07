@@ -4,7 +4,7 @@ import FreeMockupModal from '../components/FreeMockupModal.astro';
 import Marquee from '../components/Marquee.astro';
 import { home } from '../config/site';
 
-const { hero, pain, transformation, tripleEngine, process, faq, finalCta } = home;
+const { hero, pain, transformation, servicesGrid, method, process, guarantee, faq, finalCta } = home;
 
 const transformationIcons: Record<string, string> = {
   shield:
@@ -29,10 +29,10 @@ const transformationIcons: Record<string, string> = {
             {hero.badge}
           </span>
           <h1 class="mt-6 text-balance text-4xl font-black leading-[1.08] tracking-tight text-cream md:text-5xl lg:text-6xl">
-            {hero.headlineStart}
+            {hero.headlineStart}{' '}
             <span class="relative mx-1 inline-block rounded-lg bg-forest/20 px-2 py-1 text-sand">
               {hero.headlineHighlight}
-            </span>{hero.headlineEnd}
+            </span>{' '}{hero.headlineEnd}
           </h1>
           <p class="mt-6 max-w-lg text-lg leading-relaxed text-cream-dim/90">
             {hero.subheadline}
@@ -191,42 +191,64 @@ const transformationIcons: Record<string, string> = {
       </div>
     </section>
 
-    <!-- TRIPLE ENGINE -->
+    <!-- SERVICES GRID: internal links to money pages with descriptive anchors -->
     <section class="relative px-6 py-24 lg:py-32">
       <div class="bg-glow-sand pointer-events-none absolute inset-0" aria-hidden="true"></div>
       <div class="relative mx-auto max-w-6xl">
         <div class="mx-auto max-w-3xl text-center" data-reveal>
           <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
-            <span class="relative inline-block">
-              {tripleEngine.headingUnderlined}
-              <svg class="absolute -bottom-1 left-0 w-full text-forest/70" viewBox="0 0 140 9" fill="none" preserveAspectRatio="none" aria-hidden="true">
-                <path d="M2.00025 6.99997C21.7509 9.37497 72.975 -3.20003 137.825 2.34997" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-              </svg>
-            </span>
-            {tripleEngine.headingEnd}
+            {servicesGrid.heading}
           </h2>
           <p class="mt-5 text-lg text-cream-dim/80">
-            {tripleEngine.subheading}
+            {servicesGrid.subheading}
           </p>
         </div>
 
-        <div class="mt-16 grid gap-6 md:grid-cols-3 lg:gap-8">
+        <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:gap-8">
           {
-            tripleEngine.items.map((item, i) => (
-              <article
+            servicesGrid.items.map((item, i) => (
+              <a
+                href={item.href}
                 class="card-elevated group relative overflow-hidden rounded-2xl border border-cream-dim/10 bg-surface p-8 hover:border-sand/40"
                 data-reveal
                 style={`--reveal-delay: ${i * 100}ms`}
               >
-                <span class="pointer-events-none absolute -right-6 -top-8 text-[7rem] font-black leading-none text-cream/[0.04] transition-colors group-hover:text-sand/[0.07]" aria-hidden="true">
-                  {i + 1}
-                </span>
-                <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-sand/30 bg-base text-xl font-black text-sand transition group-hover:scale-105 group-hover:border-sand/60">
-                  {i + 1}
-                </div>
-                <h3 class="text-xl font-bold text-cream">{item.title}</h3>
-                <p class="mt-3 leading-relaxed text-cream-dim/70">{item.body}</p>
-              </article>
+                <h3 class="text-xl font-bold text-cream transition group-hover:text-sand">{item.title}</h3>
+                <p class="mt-3 leading-relaxed text-cream-dim/70">{item.blurb}</p>
+                <p class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-sand">
+                  See {item.anchor}
+                  <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- METHOD: 6-step local authority framework, plain English -->
+    <section class="bg-surface px-6 py-24 lg:py-32">
+      <div class="mx-auto max-w-5xl">
+        <div class="mx-auto max-w-3xl text-center" data-reveal>
+          <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
+            {method.heading}
+          </h2>
+          <p class="mt-5 text-lg text-cream-dim/80">{method.subheading}</p>
+        </div>
+
+        <div class="mt-16 grid gap-6 md:grid-cols-2">
+          {
+            method.steps.map((step, i) => (
+              <div
+                class="card-elevated rounded-2xl border border-cream-dim/10 bg-base p-7 hover:border-forest/50"
+                data-reveal
+                style={`--reveal-delay: ${i * 80}ms`}
+              >
+                <h3 class="text-lg font-bold text-sand">{step.title}</h3>
+                <p class="mt-3 leading-relaxed text-cream-dim/70">{step.body}</p>
+              </div>
             ))
           }
         </div>
@@ -234,7 +256,7 @@ const transformationIcons: Record<string, string> = {
     </section>
 
     <!-- 3-STEP PROCESS -->
-    <section class="bg-surface px-6 py-24 lg:py-32">
+    <section class="px-6 py-24 lg:py-32">
       <div class="mx-auto max-w-5xl">
         <h2 class="text-center text-3xl font-black leading-tight text-cream md:text-5xl" data-reveal>
           {process.headingStart}
@@ -244,7 +266,6 @@ const transformationIcons: Record<string, string> = {
         </h2>
 
         <div class="relative mt-16 grid gap-10 md:grid-cols-3 md:gap-8">
-          <!-- Connecting line (desktop) -->
           <div class="pointer-events-none absolute left-[16%] right-[16%] top-0 hidden h-px bg-gradient-to-r from-forest/60 via-sand/40 to-forest/60 md:block" aria-hidden="true"></div>
           {
             process.steps.map((step, i) => (
@@ -262,6 +283,24 @@ const transformationIcons: Record<string, string> = {
             ))
           }
         </div>
+      </div>
+    </section>
+
+    <!-- GUARANTEE SEAL -->
+    <section class="px-6 pb-8">
+      <div
+        class="relative mx-auto max-w-4xl overflow-hidden rounded-[2.5rem] border border-forest/40 bg-gradient-to-br from-forest/15 via-surface to-surface p-8 text-center shadow-[0_0_60px_-20px_var(--color-forest)] md:p-14"
+        data-reveal
+      >
+        <div class="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-3xl border border-forest/40 bg-forest/15 text-4xl">
+          {guarantee.seal}
+        </div>
+        <h2 class="text-2xl font-black leading-tight text-cream md:text-4xl">
+          {guarantee.heading}
+        </h2>
+        <p class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-cream-dim/80">
+          {guarantee.body}
+        </p>
       </div>
     </section>
 
