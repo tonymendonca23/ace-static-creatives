@@ -8,15 +8,19 @@ import { siteData } from '../data/siteData';
 interface Props {
   title?: string;
   description?: string;
+  /** Absolute or root-relative path for the social preview card. Defaults to the branded emblem. */
+  ogImage?: string;
 }
 
-const { title = seo.default.title, description = seo.default.description } = Astro.props;
+const { title = seo.default.title, description = seo.default.description, ogImage: ogImageProp } = Astro.props;
 
 // Build canonical URL from current path
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
 
-// Open Graph image (using hero image as fallback)
-const ogImage = `${siteUrl}/hero-image-4.png`;
+// Open Graph image — per-page override, else the branded emblem
+const ogImage = ogImageProp
+  ? new URL(ogImageProp, siteUrl).href
+  : `${siteUrl}/img/og-default.png`;
 
 // JSON-LD structured data for LocalBusiness
 const jsonLd = {
@@ -59,7 +63,7 @@ const jsonLd = {
       closes: '14:00',
     },
   ],
-  priceRange: 'GYD 20000 - GYD 50000',
+  priceRange: 'GYD 25000 - GYD 50000',
   image: ogImage,
   sameAs: [
     siteData.googleMapsUrl,
@@ -73,15 +77,8 @@ const brandVars = `
   :root {
     --brand-base: ${colors.base};
     --brand-surface: ${colors.surface};
-    --brand-surface-2: ${colors.surface2};
     --brand-cream: ${colors.cream};
-    --brand-cream-dim: ${colors.creamDim};
-    --brand-sand: ${colors.sand};
-    --brand-olive: ${colors.olive};
-    --brand-forest: ${colors.forest};
-    --brand-clay: ${colors.clay};
-    --brand-clay-dark: ${colors.clayDark};
-    --brand-warm-blue: ${colors.warmBlue};
+    --brand-gold: ${colors.gold};
   }
 `;
 ---
@@ -91,8 +88,9 @@ const brandVars = `
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" href="/favicon.ico" sizes="48x48" />
+		<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<meta name="robots" content="index, follow" />
@@ -121,12 +119,12 @@ const brandVars = `
 		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
 		
 		<style set:html={brandVars}></style>
-		<!-- Google Fonts: preload critical font files to avoid render-blocking -->
+		<!-- Google Fonts: Cormorant Garamond (headers) + Commissioner (body) -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Sora:wght@500;600;700;800&display=swap">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Sora:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'">
-		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Sora:wght@500;600;700;800&display=swap"></noscript>
+		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Commissioner:wght@400;500;600;700&display=swap">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Commissioner:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Commissioner:wght@400;500;600;700&display=swap"></noscript>
 		<!-- Google Tag Manager -->
 		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -157,7 +155,7 @@ const brandVars = `
 			gtag('config', 'G-FK2F9YXTPH');
 		</script>
 	</head>
-	<body class="bg-base text-cream font-sans antialiased selection:bg-clay selection:text-cream">
+	<body class="bg-base text-cream font-sans antialiased selection:bg-gold selection:text-surface">
 		<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MN439D49"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

@@ -6,7 +6,7 @@ const isActive = (href: string) =>
   href === currentPath || (href !== '/' && currentPath.startsWith(href));
 ---
 
-<header class="sticky top-0 z-50 w-full border-b border-cream-dim/10 bg-base/85 shadow-[0_4px_24px_-8px_rgb(0_0_0_/_0.5)] backdrop-blur-xl">
+<header class="sticky top-0 z-50 w-full border-b border-cream/10 bg-base/85 backdrop-blur-sm">
   <div class="mx-auto max-w-7xl px-5 sm:px-6">
     <nav class="flex h-[4.25rem] items-center justify-between gap-4" aria-label="Primary">
       <a
@@ -14,11 +14,14 @@ const isActive = (href: string) =>
         class="group flex shrink-0 items-center gap-2.5"
       >
         <img
-          src="/ace-static-creatives-logo.png"
-          alt="Ace Static Creatives Logo"
+          src="/asc-monogram.png"
+          alt=""
+          aria-hidden="true"
+          width="129"
+          height="128"
           class="h-8 w-auto transition-transform duration-300 group-hover:scale-105"
         />
-        <span class="text-base font-black tracking-tight text-cream sm:text-lg">Ace Static Creatives</span>
+        <span class="text-base font-bold tracking-tight text-cream sm:text-lg">Ace Static Creatives</span>
       </a>
 
       <!-- Desktop nav -->
@@ -31,7 +34,7 @@ const isActive = (href: string) =>
               class:list={[
                 'relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200',
                 isActive(link.href)
-                  ? 'bg-surface-2 text-sand'
+                  ? 'bg-cream/10 text-gold'
                   : 'text-cream/70 hover:bg-surface hover:text-cream',
               ]}
             >
@@ -43,7 +46,7 @@ const isActive = (href: string) =>
           href={nav.cta.href}
           target="_blank"
           rel="noopener noreferrer"
-          class="ml-3 inline-flex items-center gap-2 rounded-full bg-forest px-5 py-2.5 text-sm font-bold text-cream shadow-[0_8px_20px_-8px_var(--color-forest)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
+          class="ml-3 inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-bold text-surface  transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
         >
           {nav.cta.label}
           <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
@@ -55,7 +58,7 @@ const isActive = (href: string) =>
       <!-- Mobile menu -->
       <details class="group relative md:hidden">
         <summary
-          class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-lg border border-cream-dim/10 bg-surface text-cream transition hover:border-sand/40 hover:text-sand"
+          class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-lg border border-cream/10 bg-surface text-cream transition hover:border-gold/40 hover:text-gold"
           aria-label="Toggle menu"
         >
           <svg
@@ -80,7 +83,7 @@ const isActive = (href: string) =>
           </svg>
         </summary>
         <div
-          class="fixed left-0 right-0 top-[4.25rem] border-b border-cream-dim/10 bg-base/95 px-6 py-6 shadow-2xl backdrop-blur-xl"
+          class="fixed left-0 right-0 top-[4.25rem] border-b border-cream/10 bg-base/95 px-6 py-6 shadow-md backdrop-blur-sm"
         >
           <div class="flex flex-col gap-1">
             {
@@ -91,7 +94,7 @@ const isActive = (href: string) =>
                   class:list={[
                     'rounded-xl px-4 py-3 text-base font-semibold transition-colors',
                     isActive(link.href)
-                      ? 'bg-surface-2 text-sand'
+                      ? 'bg-cream/10 text-gold'
                       : 'text-cream/90 hover:bg-surface hover:text-cream',
                   ]}
                 >
@@ -103,7 +106,7 @@ const isActive = (href: string) =>
               href={nav.cta.href}
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-3 rounded-full bg-forest px-5 py-3.5 text-center text-sm font-bold text-cream shadow-[0_8px_20px_-8px_var(--color-forest)] transition hover:brightness-110"
+              class="mt-3 rounded-full bg-gold px-5 py-3.5 text-center text-sm font-bold text-surface  transition hover:brightness-110"
             >
               {nav.cta.label}
             </a>

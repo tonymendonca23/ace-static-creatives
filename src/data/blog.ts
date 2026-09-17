@@ -12,6 +12,8 @@ export interface BlogPost {
   description: string;
   date: string; // ISO
   author: string;
+  /** Header illustration (16:9). Responsive pair lives in /public/img/. */
+  image: { src: string; srcset: string; alt: string; width: number; height: number };
   /** money page this post links to */
   relatedService: { href: string; anchor: string };
   /** paragraphs; strings starting with "## " render as h2 */
@@ -29,6 +31,14 @@ export const blogPosts: BlogPost[] = [
       'A plain-English guide for Guyanese business owners: the three reasons your business is invisible on Google Maps in Georgetown, and how to fix each one.',
     date: '2026-09-01',
     author: 'Ace Static Creatives',
+    image: {
+      src: '/img/blog-google-visibility-1600w.webp',
+      srcset:
+        '/img/blog-google-visibility-800w.webp 800w, /img/blog-google-visibility-1600w.webp 1600w',
+      alt: 'Illustration of a city street map with one gold location pin standing out while four grey pins are ignored',
+      width: 1600,
+      height: 900,
+    },
     relatedService: {
       href: '/services/google-business-profile',
       anchor: 'our Google Business Profile setup in Georgetown',
@@ -65,6 +75,14 @@ export const blogPosts: BlogPost[] = [
       "Guyana's rainy season changes what locals search for. A checklist for Georgetown business owners to update their website and Google listing before the floods.",
     date: '2026-09-06',
     author: 'Ace Static Creatives',
+    image: {
+      src: '/img/blog-rainy-season-1600w.webp',
+      srcset:
+        '/img/blog-rainy-season-800w.webp 800w, /img/blog-rainy-season-1600w.webp 1600w',
+      alt: 'Illustration of heavy tropical rain falling over a row of Georgetown shopfronts, one window lit gold',
+      width: 1600,
+      height: 900,
+    },
     relatedService: {
       href: '/services/local-seo',
       anchor: 'our local SEO service in Georgetown',

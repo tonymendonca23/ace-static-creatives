@@ -1,36 +1,40 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import FreeMockupModal from '../components/FreeMockupModal.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
 import { seo, services } from '../config/site';
 import { serviceCategories } from '../data/services';
 
 const { hero, pain, comparison, plans, updates, guarantee, finalCta } = services;
+
+const whatsappIntro = 'Hi Ace Static Creatives! I want to claim my Digital Salesman for my business in Guyana.';
 ---
 
 <Layout title={seo.services.title} description={seo.services.description}>
   <main class="w-full overflow-hidden">
     <!-- HERO -->
     <section class="relative px-6 pb-20 pt-14 text-center lg:pb-24 lg:pt-20">
-      <div class="bg-glow-forest pointer-events-none absolute inset-0" aria-hidden="true"></div>
       <div class="relative mx-auto max-w-5xl" data-reveal>
-        <p class="mx-auto max-w-3xl rounded-full border border-clay/30 bg-clay/10 px-5 py-2 text-xs font-bold uppercase tracking-wider text-sand sm:text-sm">
+        <p class="mx-auto max-w-3xl rounded-full border border-cream/20 bg-cream/8 px-5 py-2 text-xs font-bold uppercase tracking-wider text-gold sm:text-sm">
           {hero.eyebrow}
         </p>
         <h1
-          class="mx-auto mt-8 text-balance text-4xl font-black leading-[1.08] tracking-tight text-cream md:text-5xl lg:text-6xl"
+          class="mx-auto mt-8 text-balance text-4xl font-bold leading-[1.08] tracking-tight text-cream md:text-5xl lg:text-6xl"
         >
           {hero.headline}
         </h1>
-        <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-cream-dim/80 md:text-xl">
+        <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-cream/80 md:text-xl">
           {hero.subheadline}
         </p>
         <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <FreeMockupModal
-            triggerLabel={hero.cta}
-            triggerClass="max-w-xl px-6 py-4 text-sm sm:text-base"
-          />
+          <WhatsAppCta label={hero.cta} message={whatsappIntro} />
+          <a
+            href={hero.secondaryCta.href}
+            class="inline-flex items-center gap-2 rounded-full border border-cream/40 px-6 py-3.5 text-sm font-bold text-cream transition hover:border-gold hover:text-gold"
+          >
+            {hero.secondaryCta.label}
+          </a>
         </div>
-        <p class="mt-4 text-sm text-cream-dim/60">
+        <p class="mt-4 text-sm text-cream/60">
           {hero.reassurance}
         </p>
       </div>
@@ -43,15 +47,15 @@ const { hero, pain, comparison, plans, updates, guarantee, finalCta } = services
           serviceCategories.map((cat, i) => (
             <a
               href={`/services/${cat.id}`}
-              class="card-elevated group rounded-2xl border border-cream-dim/10 bg-surface p-5 hover:border-sand/40"
+              class="card-elevated group rounded-2xl border border-cream/10 bg-surface p-5 hover:border-gold/50"
               data-reveal
               style={`--reveal-delay: ${i * 70}ms`}
             >
-              <p class="text-sm font-black text-cream transition group-hover:text-sand">{cat.eyebrow}</p>
-              <p class="mt-1.5 text-xs leading-relaxed text-cream-dim/70">
+              <p class="text-lg font-semibold text-cream transition group-hover:text-gold">{cat.eyebrow}</p>
+              <p class="mt-1.5 text-xs leading-relaxed text-cream/70">
                 {cat.keyword.replace(' in Georgetown, Guyana', '')} in Georgetown — pricing, process & FAQs.
               </p>
-              <p class="mt-3 text-xs font-bold text-sand">View details →</p>
+              <p class="mt-3 text-xs font-bold text-gold">View details →</p>
             </a>
           ))
         }
@@ -60,13 +64,12 @@ const { hero, pain, comparison, plans, updates, guarantee, finalCta } = services
 
     <!-- PAIN SECTION -->
     <section class="relative bg-surface px-6 py-24 lg:py-32">
-      <div class="bg-dot-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden="true"></div>
       <div class="relative mx-auto max-w-6xl">
         <div class="mb-16 text-center" data-reveal>
-          <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
+          <h2 class="text-balance text-3xl font-bold leading-tight text-cream md:text-5xl">
             {pain.heading}
           </h2>
-          <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-cream-dim/80">
+          <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-cream/80">
             {pain.subheading}
           </p>
         </div>
@@ -75,23 +78,23 @@ const { hero, pain, comparison, plans, updates, guarantee, finalCta } = services
           {
             pain.cards.map((card, i) => (
               <div
-                class="card-elevated rounded-2xl border border-cream-dim/10 bg-base p-6 hover:border-clay/40"
+                class="card-elevated rounded-2xl border border-cream/10 bg-base p-6 hover:border-gold/50"
                 data-reveal
                 style={`--reveal-delay: ${i * 80}ms`}
               >
-                <span class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-clay/15 text-lg text-clay" aria-hidden="true">
+                <span class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-cream/8 text-lg text-cream/60" aria-hidden="true">
                   ✕
                 </span>
-                <h3 class="mb-3 text-lg font-bold text-cream">{card.title}</h3>
-                <p class="text-sm leading-relaxed text-cream-dim/70">{card.body}</p>
+                <h3 class="mb-3 text-xl font-semibold text-cream">{card.title}</h3>
+                <p class="text-sm leading-relaxed text-cream/70">{card.body}</p>
               </div>
             ))
           }
         </div>
 
-        <div class="mx-auto mt-14 max-w-4xl rounded-2xl border-l-4 border-clay bg-base p-8 shadow-[0_16px_40px_-16px_rgb(0_0_0_/_0.6)]" data-reveal>
-          <p class="text-lg leading-relaxed text-cream-dim">
-            <span class="font-bold text-clay">{pain.truthLabel}</span>
+        <div class="mx-auto mt-14 max-w-4xl rounded-2xl border-l-2 border-gold bg-base p-8 " data-reveal>
+          <p class="text-lg leading-relaxed text-cream">
+            <span class="font-bold text-cream/60">{pain.truthLabel}</span>
             {pain.truthBody}
           </p>
         </div>
@@ -102,33 +105,33 @@ const { hero, pain, comparison, plans, updates, guarantee, finalCta } = services
     <section class="px-6 py-24 lg:py-32">
       <div class="mx-auto max-w-6xl">
         <div class="mb-16 text-center" data-reveal>
-          <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
+          <h2 class="text-balance text-3xl font-bold leading-tight text-cream md:text-5xl">
             {comparison.heading}
           </h2>
         </div>
 
-        <div class="overflow-hidden rounded-3xl border border-cream-dim/10 shadow-[0_24px_60px_-20px_rgb(0_0_0_/_0.7)]" data-reveal>
+        <div class="overflow-hidden rounded-2xl border border-cream/10" data-reveal>
           <div class="grid md:grid-cols-2">
             <div class="bg-surface p-8 md:p-10">
-              <h3 class="mb-6 text-xl font-bold text-cream-dim/70">
+              <h3 class="mb-6 text-2xl font-semibold text-cream/70">
                 {comparison.standardHeading}
               </h3>
               <ul class="space-y-4">
                 {comparison.rows.map((row) => (
-                  <li class="flex items-start gap-3 text-cream-dim/80">
-                    <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-clay/15 text-xs text-clay">✕</span>
+                  <li class="flex items-start gap-3 text-cream/80">
+                    <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cream/8 text-xs text-cream/60">✕</span>
                     <span>{row.standard}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div class="relative bg-forest/10 p-8 md:p-10">
-              <div class="pointer-events-none absolute inset-y-0 left-0 hidden w-px bg-gradient-to-b from-transparent via-sand/30 to-transparent md:block" aria-hidden="true"></div>
-              <h3 class="mb-6 text-xl font-bold text-sand">{comparison.aceHeading}</h3>
+            <div class="relative bg-gold/10 p-8 md:p-10">
+              <div class="pointer-events-none absolute inset-y-0 left-0 hidden w-px bg-cream/15 md:block" aria-hidden="true"></div>
+              <h3 class="mb-6 text-2xl font-semibold text-gold">{comparison.aceHeading}</h3>
               <ul class="space-y-4">
                 {comparison.rows.map((row) => (
                   <li class="flex items-start gap-3 text-cream">
-                    <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-forest/25 text-xs text-sand">✓</span>
+                    <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold text-xs font-bold text-surface">✓</span>
                     <span>{row.ace}</span>
                   </li>
                 ))}
@@ -141,13 +144,12 @@ const { hero, pain, comparison, plans, updates, guarantee, finalCta } = services
 
     <!-- PLANS -->
     <section class="relative bg-surface px-6 py-24 lg:py-32">
-      <div class="bg-glow-sand pointer-events-none absolute inset-0" aria-hidden="true"></div>
       <div class="relative mx-auto max-w-5xl">
         <div class="mb-16 text-center" data-reveal>
-          <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
+          <h2 class="text-balance text-3xl font-bold leading-tight text-cream md:text-5xl">
             {plans.heading}
           </h2>
-          <p class="mx-auto mt-4 max-w-2xl text-lg text-cream-dim/80">
+          <p class="mx-auto mt-4 max-w-2xl text-lg text-cream/80">
             {plans.subheading}
           </p>
         </div>
@@ -157,10 +159,10 @@ const { hero, pain, comparison, plans, updates, guarantee, finalCta } = services
             plans.items.map((pkg, i) => (
               <div
                 class:list={[
-                  'card-elevated relative flex flex-col rounded-3xl border p-8 pt-10',
+                  'card-elevated relative flex flex-col rounded-2xl border p-8 pt-10',
                   pkg.featured
-                    ? 'border-forest/60 bg-gradient-to-b from-forest/15 to-base shadow-[0_0_60px_-20px_var(--color-forest)]'
-                    : 'border-cream-dim/10 bg-base',
+                    ? 'border-gold/70 bg-base '
+                    : 'border-cream/10 bg-base',
                 ]}
                 data-reveal
                 style={`--reveal-delay: ${i * 100}ms`}
@@ -169,26 +171,26 @@ const { hero, pain, comparison, plans, updates, guarantee, finalCta } = services
                   class:list={[
                     'absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider',
                     pkg.featured
-                      ? 'bg-forest text-cream shadow-[0_8px_20px_-6px_var(--color-forest)]'
-                      : 'bg-surface-2 text-cream-dim',
+                      ? 'bg-gold text-surface '
+                      : 'bg-cream/10 text-cream',
                   ]}
                 >
                   {pkg.tag}
                 </span>
 
-                <h3 class="text-2xl font-black text-cream">{pkg.name}</h3>
+                <h3 class="text-3xl font-semibold text-cream">{pkg.name}</h3>
 
-                <div class="mt-5 space-y-1.5 border-b border-cream-dim/10 pb-6">
-                  <p class="text-sm text-cream-dim/70">{pkg.priceSetup}</p>
-                  <p class="text-3xl font-black text-sand md:text-4xl">{pkg.priceMonthly}</p>
-                  <p class="text-xs text-cream-dim/60">{pkg.term}</p>
+                <div class="mt-5 space-y-1.5 border-b border-cream/10 pb-6">
+                  <p class="text-sm text-cream/70">{pkg.priceSetup}</p>
+                  <p class="text-4xl font-bold text-gold md:text-5xl">{pkg.priceMonthly}</p>
+                  <p class="text-xs text-cream/70">{pkg.term}</p>
                 </div>
 
                 <ul class="mt-6 flex-1 space-y-3.5">
                   {pkg.features.map((feature) => (
-                    <li class="flex items-start gap-3 text-sm leading-relaxed text-cream-dim">
+                    <li class="flex items-start gap-3 text-sm leading-relaxed text-cream">
                       <svg
-                        class="mt-0.5 h-5 w-5 shrink-0 text-sand"
+                        class="mt-0.5 h-5 w-5 shrink-0 text-gold"
                         fill="none"
                         stroke="currentColor"
                         stroke-width="2"
@@ -203,7 +205,7 @@ const { hero, pain, comparison, plans, updates, guarantee, finalCta } = services
                 </ul>
 
                 <div class="mt-8">
-                  <FreeMockupModal triggerLabel={pkg.cta} triggerClass="w-full" />
+                  <WhatsAppCta label={pkg.cta} message={`Hi Ace Static Creatives! I'm interested in ${pkg.name} (${pkg.priceMonthly}). Can we talk?`} class="w-full" />
                 </div>
               </div>
             ))
@@ -215,33 +217,33 @@ const { hero, pain, comparison, plans, updates, guarantee, finalCta } = services
     <!-- UPDATE POLICY -->
     <section class="px-6 py-24 lg:py-28">
       <div class="mx-auto max-w-5xl" data-reveal>
-        <h2 class="text-center text-2xl font-black leading-tight text-cream md:text-4xl">
+        <h2 class="text-center text-balance text-2xl font-bold leading-tight text-cream md:text-4xl">
           {updates.heading}
         </h2>
         <div class="mt-10 grid gap-6 md:grid-cols-2">
-          <div class="rounded-3xl border border-forest/40 bg-surface p-8">
-            <p class="text-sm font-black uppercase tracking-wider text-sand">✓ Included in your plan</p>
+          <div class="rounded-2xl border border-gold/40 bg-surface p-8">
+            <p class="text-sm font-bold uppercase tracking-wider text-gold">✓ Included in your plan</p>
             <ul class="mt-5 space-y-3">
               {updates.included.map((item) => (
-                <li class="flex items-start gap-3 text-sm leading-relaxed text-cream-dim">
-                  <span class="mt-0.5 text-sand">✓</span>
+                <li class="flex items-start gap-3 text-sm leading-relaxed text-cream">
+                  <span class="mt-0.5 text-gold">✓</span>
                   {item}
                 </li>
               ))}
             </ul>
-            <p class="mt-5 text-xs italic text-cream-dim/60">{updates.includedNote}</p>
+            <p class="mt-5 text-xs italic text-cream/70">{updates.includedNote}</p>
           </div>
-          <div class="rounded-3xl border border-clay/30 bg-surface p-8">
-            <p class="text-sm font-black uppercase tracking-wider text-clay">✕ Billed as project add-ons</p>
+          <div class="rounded-2xl border border-cream/15 bg-surface p-8">
+            <p class="text-sm font-bold uppercase tracking-wider text-cream/60">✕ Billed as project add-ons</p>
             <ul class="mt-5 space-y-3">
               {updates.notIncluded.map((item) => (
-                <li class="flex items-start gap-3 text-sm leading-relaxed text-cream-dim">
-                  <span class="mt-0.5 text-clay">✕</span>
+                <li class="flex items-start gap-3 text-sm leading-relaxed text-cream">
+                  <span class="mt-0.5 text-cream/60">✕</span>
                   {item}
                 </li>
               ))}
             </ul>
-            <p class="mt-5 text-xs italic text-cream-dim/60">{updates.notIncludedNote}</p>
+            <p class="mt-5 text-xs italic text-cream/70">{updates.notIncludedNote}</p>
           </div>
         </div>
       </div>
@@ -250,13 +252,20 @@ const { hero, pain, comparison, plans, updates, guarantee, finalCta } = services
     <!-- GUARANTEE -->
     <section class="px-6 py-24 text-center lg:py-32">
       <div class="mx-auto max-w-3xl" data-reveal>
-        <div class="mb-8 inline-flex h-20 w-20 items-center justify-center rounded-3xl border border-forest/40 bg-forest/15 text-4xl shadow-[0_0_40px_-12px_var(--color-forest)]">
-          🛡️
-        </div>
-        <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
+        <img
+          src="/img/guarantee-seal.webp"
+          alt=""
+          aria-hidden="true"
+          class="mx-auto mb-8 h-24 w-24 md:h-28 md:w-28"
+          width="512"
+          height="512"
+          loading="lazy"
+          decoding="async"
+        />
+        <h2 class="text-balance text-3xl font-bold leading-tight text-cream md:text-5xl">
           {guarantee.heading}
         </h2>
-        <p class="mx-auto mt-6 text-lg leading-relaxed text-cream-dim/80">
+        <p class="mx-auto mt-6 text-lg leading-relaxed text-cream/80">
           {guarantee.body}
         </p>
       </div>
@@ -265,25 +274,24 @@ const { hero, pain, comparison, plans, updates, guarantee, finalCta } = services
     <!-- FINAL CTA -->
     <section class="px-6 pb-28">
       <div
-        class="relative mx-auto max-w-4xl overflow-hidden rounded-[2.5rem] border border-sand/30 bg-gradient-to-br from-surface via-surface to-forest/10 px-8 py-16 text-center shadow-[0_32px_80px_-24px_rgb(0_0_0_/_0.7)] md:px-16"
+        class="relative mx-auto max-w-4xl overflow-hidden rounded-2xl border border-gold/25 bg-surface px-8 py-16 text-center md:px-16"
         data-reveal
       >
-        <div class="bg-dot-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
         <div class="relative">
-          <h2 class="text-3xl font-black leading-tight text-cream md:text-5xl">
+          <h2 class="text-balance text-3xl font-bold leading-tight text-cream md:text-5xl">
             {finalCta.heading}
           </h2>
-          <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-cream-dim/80">
+          <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-cream/80">
             {finalCta.body}
           </p>
-          <div class="mt-10">
-            <FreeMockupModal triggerLabel={finalCta.cta} />
+          <div class="mt-10 flex justify-center">
+            <WhatsAppCta label={finalCta.cta} message={whatsappIntro} />
           </div>
-          <ol class="mx-auto mt-12 max-w-xl space-y-4 text-left text-cream-dim/80">
+          <ol class="mx-auto mt-12 max-w-xl space-y-4 text-left text-cream/80">
             {
               finalCta.steps.map((step, i) => (
                 <li class="flex items-start gap-4">
-                  <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-sand/40 bg-base text-sm font-black text-sand">
+                  <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gold/40 bg-base text-sm font-bold text-gold">
                     {i + 1}
                   </span>
                   <span class="pt-1">{step}</span>

@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import FreeMockupModal from '../../components/FreeMockupModal.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
 import { blogPosts, getPost } from '../../data/blog';
 import { siteUrl, contact } from '../../config/site';
 import { siteData } from '../../data/siteData';
@@ -26,29 +26,48 @@ const blogSchema = {
   publisher: { '@type': 'Organization', name: 'Ace Static Creatives', url: siteUrl },
   mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
   isPartOf: { '@type': 'Blog', '@id': `${siteUrl}/blog/`, name: 'Ace Static Creatives Blog' },
+  image: [`${siteUrl}${post.image.src}`],
 };
 ---
 
-<Layout title={`${post.title} | Ace Static Creatives`} description={post.description}>
+<Layout
+  title={`${post.title} | Ace Static Creatives`}
+  description={post.description}
+  ogImage={post.image.src}
+>
   <script type="application/ld+json" set:html={JSON.stringify(blogSchema)}></script>
 
   <main class="w-full overflow-hidden">
     <article class="px-6 pb-16 pt-24 lg:pt-32">
       <div class="mx-auto max-w-3xl">
-        <p class="text-xs font-bold uppercase tracking-wider text-sand" data-reveal>
+        <p class="text-xs font-bold uppercase tracking-wider text-gold" data-reveal>
           {new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
-          <span class="mx-2 text-cream-dim/40">•</span>
+          <span class="mx-2 text-cream/60">•</span>
           Georgetown, Guyana
         </p>
-        <h1 class="mt-5 text-balance text-3xl font-black leading-tight tracking-tight text-cream md:text-5xl" data-reveal>
+        <h1 class="mt-5 text-balance text-3xl font-bold leading-tight tracking-tight text-cream md:text-5xl" data-reveal>
           {post.title}
         </h1>
 
-        <div class="mt-10 space-y-6 text-lg leading-relaxed text-cream-dim/85">
+        <img
+          src={post.image.src}
+          srcset={post.image.srcset}
+          sizes="(min-width: 768px) 768px, 100vw"
+          alt={post.image.alt}
+          class="mt-10 aspect-video w-full rounded-2xl border border-cream/15 object-cover"
+          width={post.image.width}
+          height={post.image.height}
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          data-reveal
+        />
+
+        <div class="mt-10 space-y-6 text-lg leading-relaxed text-cream/85">
           {
             post.body.map((block) =>
               block.startsWith('## ') ? (
-                <h2 class="pt-4 text-2xl font-black leading-snug text-cream md:text-3xl">{block.replace('## ', '')}</h2>
+                <h2 class="pt-4 text-2xl font-bold leading-snug text-cream md:text-3xl">{block.replace('## ', '')}</h2>
               ) : (
                 <p>{block}</p>
               )
@@ -57,30 +76,30 @@ const blogSchema = {
         </div>
 
         <!-- CTA block: WhatsApp + Google Maps + related money page -->
-        <div class="mt-14 rounded-3xl border border-forest/40 bg-surface p-8 text-center shadow-[0_0_50px_-18px_var(--color-forest)]" data-reveal>
-          <h2 class="text-2xl font-black leading-tight text-cream">Ready to get found on Google?</h2>
-          <p class="mx-auto mt-4 max-w-xl leading-relaxed text-cream-dim/80">
-            We build fast static websites, fix Google Business Profiles and write weekly local content for Guyanese small businesses. Start with a free mockup — zero obligation.
+        <div class="mt-14 rounded-2xl border border-gold/40 bg-surface p-8 text-center " data-reveal>
+          <h2 class="text-2xl font-bold leading-tight text-cream">Ready to get found on Google?</h2>
+          <p class="mx-auto mt-4 max-w-xl leading-relaxed text-cream/80">
+            We build fast static websites, fix Google Business Profiles and write weekly local content for Guyanese small businesses. Message us on WhatsApp — zero obligation.
           </p>
           <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <FreeMockupModal triggerLabel="Claim Your FREE Website Mockup" />
+            <WhatsAppCta label="Claim Your Digital Salesman" message="Hi Ace Static Creatives! I read your blog and want to claim my Digital Salesman for my business." />
             <a
               href={contact.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 rounded-full border border-cream-dim/30 px-6 py-3.5 text-sm font-bold text-cream transition hover:border-sand hover:text-sand"
+              class="inline-flex items-center gap-2 rounded-full border border-cream/30 px-6 py-3.5 text-sm font-bold text-cream transition hover:border-gold hover:text-gold"
             >
               WhatsApp us
             </a>
           </div>
           <div class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
-            <a href={post.relatedService.href} class="font-semibold text-sand underline-offset-4 hover:underline">
+            <a href={post.relatedService.href} class="font-semibold text-gold underline-offset-4 hover:underline">
               See {post.relatedService.anchor}
             </a>
-            <a href={siteData.googleMapsUrl} target="_blank" rel="noopener noreferrer nofollow" class="font-semibold text-sand underline-offset-4 hover:underline">
+            <a href={siteData.googleMapsUrl} target="_blank" rel="noopener noreferrer nofollow" class="font-semibold text-gold underline-offset-4 hover:underline">
               Find us on Google Maps
             </a>
-            <a href="/blog" class="font-semibold text-cream-dim/70 underline-offset-4 hover:text-sand hover:underline">
+            <a href="/blog" class="font-semibold text-cream/70 underline-offset-4 hover:text-gold hover:underline">
               All articles
             </a>
           </div>
@@ -89,12 +108,12 @@ const blogSchema = {
         <!-- External references (nofollow) -->
         {
           post.externalLinks.length > 0 && (
-            <p class="mt-8 text-xs leading-relaxed text-cream-dim/50">
+            <p class="mt-8 text-xs leading-relaxed text-cream/60">
               Further reading:{' '}
               {post.externalLinks.map((l, i) => (
                 <>
                   {i > 0 && ', '}
-                  <a href={l.href} target="_blank" rel="noopener noreferrer nofollow" class="underline underline-offset-2 hover:text-sand">
+                  <a href={l.href} target="_blank" rel="noopener noreferrer nofollow" class="underline underline-offset-2 hover:text-gold">
                     {l.label}
                   </a>
                 </>

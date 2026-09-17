@@ -17,6 +17,8 @@ export interface ServiceCategory {
   eyebrow: string;
   headline: string;
   subheadline: string;
+  /** Hero illustration (4:3). Responsive pair lives in /public/img/. */
+  image: { src: string; srcset: string; alt: string; width: number; height: number };
   /** What the client gets — plain English, benefit-first */
   bullets: string[];
   /** Local proof / trust line */
@@ -32,11 +34,19 @@ export const serviceCategories: ServiceCategory[] = [
     id: 'web-design',
     keyword: 'Web Design in Georgetown, Guyana',
     metaDescription:
-      'Fast static web design in Georgetown, Guyana. Custom 5-page websites, WhatsApp lead routing and managed hosting from $0 setup. Claim your free mockup today.',
+      'Fast static web design in Georgetown, Guyana. Custom 5-page websites, WhatsApp lead routing and managed hosting with zero setup fees. Chat with us today.',
     eyebrow: 'Static Web Design',
     headline: 'Fast Static Web Design in Georgetown, Guyana — Built to Bring You WhatsApp Leads',
     subheadline:
       'A custom 5-page website that loads instantly on GTT and DigiCell data, never breaks, and routes every interested visitor straight to your WhatsApp. No hidden fees. No surprise bills.',
+    image: {
+      src: '/img/service-web-design-1200w.webp',
+      srcset:
+        '/img/service-web-design-600w.webp 600w, /img/service-web-design-1200w.webp 1200w',
+      alt: 'Illustration of a website wireframe with a gold call-to-action button and speed lines showing an instant load',
+      width: 1200,
+      height: 900,
+    },
     bullets: [
       'Custom 5-page static website: Home, Services, About, Contact, Gallery',
       'Mobile-first build tuned for Guyana\'s mobile networks — instant first paint',
@@ -45,7 +55,7 @@ export const serviceCategories: ServiceCategory[] = [
       'Up to 8–15 website updates per month — just text us the change',
     ],
     trustLine: 'Built and managed by a team based in Georgetown, Guyana. You never touch the tech.',
-    priceLabel: 'From $0 GYD setup + $20,000 GYD/mo',
+    priceLabel: 'From $0 GYD setup + $25,000 GYD/mo',
     priceNote: 'The Digital Salesman plan starts at $0 upfront on a 12-month agreement.',
     faq: [
       {
@@ -69,6 +79,14 @@ export const serviceCategories: ServiceCategory[] = [
     headline: 'Local SEO in Georgetown, Guyana — Rank for the Searches That Make Your Phone Ring',
     subheadline:
       'We ignore national vanity keywords that bring traffic that can\'t buy. We target "your service Georgetown" — the exact searches typed by people ready to book today.',
+    image: {
+      src: '/img/service-local-seo-1200w.webp',
+      srcset:
+        '/img/service-local-seo-600w.webp 600w, /img/service-local-seo-1200w.webp 1200w',
+      alt: 'Illustration of a magnifying glass over rooftop buildings, with one building highlighted in gold inside the lens',
+      width: 1200,
+      height: 900,
+    },
     bullets: [
       'Keyword targeting for high-intent local searches like "your service Georgetown"',
       'Dedicated money pages that match exactly what buyers type when ready to hire',
@@ -77,7 +95,7 @@ export const serviceCategories: ServiceCategory[] = [
       'Real local backlinks from respected Guyanese businesses and verified directories — never spam',
     ],
     trustLine: 'Plain English, no jargon: we make you the first name locals see when they\'re ready to buy.',
-    priceLabel: 'Included in plans from $20,000 GYD/mo',
+    priceLabel: 'Included in plans from $25,000 GYD/mo',
     priceNote: 'Local SEO foundation is included in every plan; continuous climbing on the Local Authority.',
     faq: [
       {
@@ -101,6 +119,13 @@ export const serviceCategories: ServiceCategory[] = [
     headline: 'Google Business Profile Setup in Georgetown, Guyana — Get Into the Map Pack',
     subheadline:
       'When people need help fast, they search Google Maps first. If your listing is empty, outdated, or missing reviews, those customers go to your competitor. We fix that first — before anything else.',
+    image: {
+      src: '/img/service-gbp-1200w.webp',
+      srcset: '/img/service-gbp-600w.webp 600w, /img/service-gbp-1200w.webp 1200w',
+      alt: 'Illustration of a gold map pin above five gold stars, showing a top-rated Google Business Profile listing',
+      width: 1200,
+      height: 900,
+    },
     bullets: [
       'Full profile cleanup: name, address, phone and hours matching exactly across the web',
       'Stock photos removed and replaced with real pictures of your team and actual work',
@@ -109,7 +134,7 @@ export const serviceCategories: ServiceCategory[] = [
       'Active monthly management on the Local Authority plan so your listing keeps climbing',
     ],
     trustLine: 'The Map Pack is where locals buy. We get you in it — and keep you there.',
-    priceLabel: 'Included in plans from $20,000 GYD/mo',
+    priceLabel: 'Included in plans from $25,000 GYD/mo',
     priceNote: 'Setup & optimization on every plan; active monthly management on the Local Authority.',
     faq: [
       {
@@ -128,11 +153,19 @@ export const serviceCategories: ServiceCategory[] = [
     id: 'website-maintenance',
     keyword: 'Website Maintenance in Georgetown, Guyana',
     metaDescription:
-      'Website maintenance in Georgetown, Guyana with no hourly bills. Managed hosting, security and up to 15 updates per month over WhatsApp. From $20,000 GYD/mo.',
+      'Website maintenance in Georgetown, Guyana with no hourly bills. Managed hosting, security and up to 15 updates per month over WhatsApp. From $25,000 GYD/mo.',
     eyebrow: 'Website Maintenance',
     headline: 'Website Maintenance in Georgetown, Guyana — No More Ghosting Developers',
     subheadline:
       'Tired of single ticks and surprise hourly bills just to change a price? We become your permanent digital mechanics: hosting, security and updates handled every month, over WhatsApp.',
+    image: {
+      src: '/img/service-maintenance-1200w.webp',
+      srcset:
+        '/img/service-maintenance-600w.webp 600w, /img/service-maintenance-1200w.webp 1200w',
+      alt: 'Illustration of a shield containing a gear and an upward gold trend line, representing ongoing website care',
+      width: 1200,
+      height: 900,
+    },
     bullets: [
       'Fully managed hosting & security — your site stays online and protected',
       'Up to 8 website updates per month on the Digital Salesman, 15 on the Local Authority',
@@ -141,7 +174,7 @@ export const serviceCategories: ServiceCategory[] = [
       'Static architecture means no broken plugins after updates — there are no plugins',
     ],
     trustLine: 'We stay by your side as your permanent digital partners in Guyana. That\'s the whole model.',
-    priceLabel: 'From $20,000 GYD/mo',
+    priceLabel: 'From $25,000 GYD/mo',
     priceNote: 'Maintenance is bundled into both plans — you never pay per fix.',
     faq: [
       {

@@ -23,3 +23,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 .cursor/mcp.json
+
+# Canva source art (already converted to public/img/*.webp — not shipped)
+image-sources/

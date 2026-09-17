@@ -1,31 +1,36 @@
 @import "tailwindcss";
 
 /*
- * Brand colors are injected as `--brand-*` CSS variables by Layout.astro from
- * src/config/site.ts. The fallbacks below match those values so the design
- * system stays intact even if a variable is missing.
+ * ─────────────────────────────────────────────────────────────────────────
+ * ACE STATIC CREATIVES — DESIGN SYSTEM
+ * ─────────────────────────────────────────────────────────────────────────
+ * Four colours only, straight from brand-identity.md. Nothing else exists.
+ *
+ *   base    #1C3010  Forest Green   — page background
+ *   surface #222524  Charcoal Black — cards & structural panels
+ *   cream   #F7F4EF  Warm Off-White — text (dimmed via opacity, never a new hue)
+ *   gold    #E5A93C  Vibrant Gold   — CTA buttons & accents (Design Execution Rule)
+ *
+ * Depth comes from 1px borders and a single restrained shadow — not glows,
+ * not gradients, not texture overlays. Calm, flat, human.
+ *
+ * Variables are injected by Layout.astro from src/config/site.ts; the
+ * fallbacks below keep the system intact if a variable is missing.
+ * ─────────────────────────────────────────────────────────────────────────
  */
 @theme {
-  --color-base: var(--brand-base, #121414);
-  --color-surface: var(--brand-surface, #1a1c1b);
-  --color-surface-2: var(--brand-surface-2, #222524);
+  --color-base: var(--brand-base, #1c3010);
+  --color-surface: var(--brand-surface, #222524);
   --color-cream: var(--brand-cream, #f7f4ef);
-  --color-cream-dim: var(--brand-cream-dim, #e9e3d4);
-  --color-sand: var(--brand-sand, #b6c29a);
-  --color-olive: var(--brand-olive, #90905c);
-  --color-forest: var(--brand-forest, #4d842b);
-  --color-clay: var(--brand-clay, #b85c4a);
-  --color-clay-dark: var(--brand-clay-dark, #8a4538);
-  --color-warm-blue: var(--brand-warm-blue, #4a6fa5);
+  --color-gold: var(--brand-gold, #e5a93c);
 
-  --font-sans: 'Roboto', system-ui, sans-serif;
-  --font-heading: 'Sora', system-ui, sans-serif;
+  /* Typography: authoritative serif headers + clean, readable sans body */
+  --font-sans: 'Commissioner', system-ui, sans-serif;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
 
-  /* Elevation system tuned for a dark warm UI */
-  --shadow-glow-sand: 0 0 40px -12px color-mix(in srgb, var(--color-sand) 45%, transparent);
-  --shadow-glow-forest: 0 0 48px -12px color-mix(in srgb, var(--color-forest) 55%, transparent);
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -8px rgb(0 0 0 / 0.5);
-  --shadow-card-hover: 0 2px 4px rgb(0 0 0 / 0.35), 0 16px 40px -8px rgb(0 0 0 / 0.6);
+  /* One quiet shadow. On a dark background borders do the real work. */
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.25);
+  --shadow-card-hover: 0 2px 6px rgb(0 0 0 / 0.3), 0 10px 24px -12px rgb(0 0 0 / 0.45);
 }
 
 h1,
@@ -37,9 +42,24 @@ h6 {
   font-family: var(--font-heading);
 }
 
+/* Cormorant Garamond is a light, high-contrast serif — headlines need weight
+   to carry authority at display sizes without looking thin. */
+h1,
+h2 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
 /* Accessible, on-brand keyboard focus for every interactive element */
 :focus-visible {
-  outline: 2px solid var(--color-sand);
+  outline: 2px solid var(--color-gold);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -49,65 +69,34 @@ h6 {
     text-wrap: balance;
   }
 
-  /* Soft radial glow used behind hero art and section headers */
-  .bg-glow-sand {
-    background: radial-gradient(
-      ellipse 60% 50% at 50% 40%,
-      color-mix(in srgb, var(--color-sand) 10%, transparent),
-      transparent
-    );
-  }
-  .bg-glow-forest {
-    background: radial-gradient(
-      ellipse 60% 50% at 50% 40%,
-      color-mix(in srgb, var(--color-forest) 14%, transparent),
-      transparent
-    );
-  }
-
-  /* Subtle dot-grid texture for depth in large sections */
-  .bg-dot-grid {
-    background-image: radial-gradient(
-      color-mix(in srgb, var(--color-cream) 5%, transparent) 1px,
-      transparent 1px
-    );
-    background-size: 28px 28px;
-  }
-
-  /* Card treatment shared across the site */
+  /* Card treatment shared across the site. A hairline border in off-white is
+     what separates panels on a dark green field — no shadow theatre needed. */
   .card-elevated {
     box-shadow: var(--shadow-card);
     transition:
-      transform 300ms ease,
-      box-shadow 300ms ease,
-      border-color 300ms ease;
+      box-shadow 200ms ease,
+      border-color 200ms ease;
   }
   .card-elevated:hover {
-    transform: translateY(-4px);
     box-shadow: var(--shadow-card-hover);
   }
 }
 
-/* Scroll-reveal: elements fade/rise in as they enter the viewport.
+/* Scroll-reveal: a short, subtle fade only — no sliding, no spring curves.
    A no-JS fallback keeps everything visible if the observer never runs. */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(24px);
-  transition:
-    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 450ms ease-out;
   transition-delay: var(--reveal-delay, 0ms);
 }
 [data-reveal].is-revealed,
 html.no-observer [data-reveal] {
   opacity: 1;
-  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] {
     opacity: 1;
-    transform: none;
     transition: none;
   }
   .animate-marquee {
@@ -125,7 +114,7 @@ html.no-observer [data-reveal] {
 }
 
 .animate-marquee {
-  animation: marquee 35s linear infinite;
+  animation: marquee 40s linear infinite;
 }
 
 .animate-marquee:hover {
