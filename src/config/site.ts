@@ -145,7 +145,7 @@ export const home = {
     secondaryCta: { label: 'View Our Portfolio', href: '/portfolio' },
     reassurance: 'Zero setup hassle. Fully managed. One simple monthly retainer — no surprise bills.',
     image: {
-      src: '/hero-1536w.webp',
+      src: '/assets/hero-1536w.d6d1429f81.webp',
       alt: 'Illustration of a static website window and smartphone loading instantly, with a gold call-to-action button and a local map pin',
       width: 1536,
       height: 1024,

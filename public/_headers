@@ -1,0 +1,12 @@
+# Cloudflare Pages cache policy.
+#
+# /assets/* holds CONTENT-HASHED files (name embeds a sha256 prefix of the
+# bytes), so a changed asset always ships under a new URL. Those can be
+# cached forever: a republish can never serve stale bytes for them.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Unhashed images keep a short TTL so a future artwork swap stops showing
+# stale bytes within an hour instead of the platform default 4 hours.
+/img/*
+  Cache-Control: public, max-age=3600, must-revalidate
