@@ -365,7 +365,7 @@ export const services = {
     eyebrow:
       'Attention Guyanese business owners: stop paying for websites that sit there looking pretty while your competitors take your customers!',
     headline:
-      'Ultra-Fast Static Websites That Rank on Google Maps and Drive Daily Phone Calls — Fully Managed, Zero Setup Hassle.',
+      'Ultra-Fast Static Websites That Rank on Google Maps and Drive Daily Phone Calls Fully Managed, Zero Setup Hassle.',
     subheadline:
       'Most web designers hand you a "pretty digital brochure" and disappear. We build a complete local visibility system: website, Google Business Profile, local SEO and authority content managed every single month.',
     cta: 'Claim Your Digital Salesman',
